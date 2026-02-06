@@ -1,7 +1,6 @@
 # Slovenian Static Pages - Translation Status
 
-This directory contains Slovenian versions of static HTML pages. The analysis and numbers below are
-based on the state of files on 29.01.2026.
+This directory contains Slovenian versions of static HTML pages.
 
 ## Translated Files (2)
 
@@ -10,7 +9,7 @@ These Slovene files were taken directly from v5, because the English files for v
 - `error.html`
 - `terms-of-service.html`
 
-## Files Needing Translation (9)
+## Files Needing Translation (7)
 
 Based on two criteria:
 1. Had Slovenian translation in v5 (but English content changed in v7)
@@ -25,13 +24,12 @@ Based on two criteria:
 | `faq.html` | YES | YES | English changed from v5 |
 | `item-lifecycle.html` | YES | YES | English changed from v5 |
 | `metadata.html` | YES | YES | English changed from v5 |
-| `szn-dataset-license.html` | NO | YES | New in v7 |
-| `theaitre-license.html` | NO | YES | New in v7 |
 
-## English-Only Files (60)
+## Licences
 
-The remaining 60 files are copies of English originals (mainly license texts).  They are also
+The remaining 60 files were copies of English originals (mainly license texts).  They are also
 untranslated for Czech (i.e., the "Czech" files in cs/ are identical to the English ones).
+We do not need these texts as we don't have these licences.
 
 ## References
 
