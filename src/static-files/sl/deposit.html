@@ -1,150 +1,550 @@
 <div style="width: 100%">
-	<style scoped="scoped">
-		.print_screen_figure{
-			text-align: center;
-			padding-bottom: 15px;
-			padding-top: 15px;
-		}
-		.print_screen_figure figcaption{
-			padding-top: 5px;
-		}
+  <style scoped="scoped">
+    .print_screen_figure{
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    }
+    .print_screen_figure figcaption{
+    padding-top: 5px;
+    }
+    
+    .print_screen_img{
+    box-shadow: 3px 3px 1px #ccc;
+    -webkit-box-shadow: 3px 3px 1px #ccc;
+    -moz-box-shadow: 3px 3px 1px #ccc;
+    }
+      #toc_container{
+      background: #f9f9f9 none repeat scroll 0 0;
+      border: 1px solid #aaa;
+      display: table;
+      font-size: 95%;
+      margin-bottom: 1em;
+      padding: 10px;
+      width: auto;
+      }
+      .toc_title{
+      font-weight: 700;
+      text-align: center;
+      }
+      
+      #toc_container li,
+      #toc_container ul,
+      #toc_container ul li{
+      list-style: outside none none !important;
+    }
+  </style>
+  
+  <h2>Kako ustvariti vnos</h2>
+  
+  <div id="intro">
+    <p style="margin-top: 10px; margin-bottom: 10px;">Vnose v CLARIN.SI repozitorij deponirajo
+      njihovi avtorji. Vsak vnos mora vsebovati popolne in pravilne metapodatke, podatki pa morajo
+      biti dobro dokumentirani in v formatih, ki so odprti in se uporabljajo v njihovih
+      skupnostih, vprašanja avtorskih pravic morajo biti razrešena, hkrati pa morajo vnosi
+      vsebovati jasne pogoje uporabe in informacije o licencah vira. Avtor vnosa mora elektronsko
+      podpisati Sporazum o distribuciji virov, s katerim potrjuje, da je imetnik avtorskih pravic
+      za podatke, ki jih vsebuje vnos, in s tem lahko podeli pravice iz izbrane licence.</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Ko je vnos oddan v repozitorij, je
+      predložen v uredniški pregled, s katerim se zagotovi, da izpolnjuje zahteve repozitorija
+      CLARIN.SI. Prosimo, pozorno preberite sledeče smernice, in se s tem izognite nepotrebni
+      zavrniti vašega vnosa. Če imate nadaljnja vprašanja o vnosu, ki ga želite deponirati, se
+      obrnite na našo <a class="helpdesk-tolink" href="#">Službo za pomoč uporabnikom</a></p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">V spodnjem besedilu je opisan postopek
+      oddaje novega vnosa v repozitorij. Kako naj bodo oblikovani sami podatki (tj. jezikovni vir)
+      je razloženo v <a href="data">Smernice za oddajo podatkov CLARIN.SI</a>, medtem ko je
+      postopek ustvarjanja nove različice vnosa pojasnjen
+      v <a href="item-lifecycle#newversion-item">Ustvarjanje nove različice vnosa</a>.</p>
+  </div>
+  
+  <div id="toc_container">
+    <p class="toc_title">Kazalo</p>
+    <ul class="toc_list">
+      <li><a href="#login">Prijava</a></li>
+      <li><a href="#start">Ustvarjanje novega vnosa</a></li>
+      <li><a href="#saving">Shrani in deli vnos</a></li>
+      <li><a href="#pid">Trajni identifikator</a></li>
+      <li><a href="#screen1">Zaslon 1: Osnovne informacije o vnosu</a></li>
+      <li>
+        <ul>
+          <li><a href="#title">Naslov</a></li>
+          <li><a href="#references">Reference</a></li>
+          <li><a href="#dateIssued">Datum izdaje</a></li>
+        </ul>
+      </li>
+      <li><a href="#screen2">Zaslon 2: Sodelujoči posamezniki in organizacije</a></li>
+      <li>
+        <ul>
+          <li><a href="#authors">Avtorji in založniki vira</a></li>
+          <li><a href="#contactPerson">Kontaktna oseba</a></li>
+          <li><a href="#funding">Financiranje</a></li>
+        </ul>
+      </li>
+      <li><a href="#screen3">Zaslon 3: Opis vira</a></li>
+      <li>
+        <ul>
+          <li><a href="#description">Opis</a></li>
+          <li><a href="#language">Jezik</a></li>
+          <li><a href="#keywords">Ključne besede</a></li>
+          <li><a href="#size">Velikost</a></li>
+          <li><a href="#mediaType">Vrsta medija</a></li>
+        </ul>
+      </li>
+      <li><a href="#screen4">Zaslon 4: Nalaganje datotek</a></li>
+      <li><a href="#screen5">Zaslon 5: Izbor licence</a></li>
+      <li>
+        <ul>
+          <li><a href="#datasets">Nabori podatkov, ki zahtevajo podpis licence</a></li>
+        </ul>
+      </li>
+      <li><a href="#screen6">Zaslon 6: Opombe za urednika</a></li>
+      <li><a href="#screen7">Zaslon 7: Pregled in oddaja vnosa</a></li>
+    </ul>
+  </div>
+  
+  <div id="login" style="margin-bottom: 20px;">
+    <h3>Prijava</h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika1.png" class="print_screen_img" width="300"/>
+      <figcaption>Slika 1. Meni za prijavo.</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Če želite ustvariti nov vnos, se morate
+      najprej prijaviti v repozitorij. V desnem meniju na zavihku "Moj račun" kliknite na
+      "Prijava".</p>
+    
+    <div class="alert">Vnose lahko ustvarijo samo prijavljeni uporabniki. Če svoje matične
+      institucije ne najdete na seznamu institucij v prijavnem pogovornem oknu, zaprosite za račun
+      na <a href="https://user.clarin.eu/user/register">clarin.eu</a> in avtentikacijo opravite s
+      klikom na "clarin.eu website account". Če avtentikacije ne morete opraviti na nobenega izmed
+      navedenih načinov ali imate pri postopku avtentikacije težave, se obrnite na našo
+      <a  class="helpdesk-tolink" href="#">Službo za pomoč uporabnikom</a>.</div>
+  </div>
 
-		.print_screen_img{
-			  box-shadow: 3px 3px 1px #ccc;
-			  -webkit-box-shadow: 3px 3px 1px #ccc;
-			  -moz-box-shadow: 3px 3px 1px #ccc;
-		}
-	</style>
+  <div id="start" style="margin-bottom: 0;">
+    <h3>Ustvarjanje novega vnosa</h3>
+      
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika2.png" class="print_screen_img" width="300"/>
+      <figcaption>Slika 2. Meni za vnose.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">V zavihku "Moj račun" se je pojavil nov
+      menijski element "Vnosi". Kliknite na "Vnosi", da odprete stran "Vnosi in naloge delotoka".
+      Zdaj se nahajate na glavni strani vnosov in nalog v delotoku, kjer lahko vidite svoje
+      nedokončane/arhivirane vnose. Da ustvarite nov vnos, kliknite na gumb "Ustvari nov vnos".</p>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika3.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 3. Ustvarjanje novega vnosa</figcaption>
+    </figure>
+      
+  </div>
+  
+  <div id="saving" style="margin-bottom: 20px;">
+    <h3>Shrani in deli vnos</h3>
+      
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika4.png" class="print_screen_img" width="300"/>
+      <figcaption>Slika 4. Shranjevanje in skupna raba vnosa.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">Ko ste vnesli informacije o vnosu
+      (podrobneje opisano v spodnjem besedilu), lahko kliknete na "Shrani in zapri" na dnu
+      zaslona, da shranite delno izpolnjen vnos in delo nadaljujete pozneje. Izberete lahko tudi
+      možnost "Shrani in deli", kjer se vam bo na zaslonu izpisal URL naslov, hkrati pa ga boste
+      prejeli tudi na vaš elektronski naslov. Če pošljete URL naslov drugim osebam, bodo te lahko
+      (po uspešni prijavi) nadaljevale delo na vnosu. Na tak način lahko omogočimo dostop večjemu
+      številu avtorjev, da lahko preverijo ali dopolnijo podatke in vnos.</p>
+  </div>
+  
+  <div id="pid" style="margin-bottom: 20px;">
+    <h3>Trajni identifikator</h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika5.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 5. Trajni identifikator (handle) na vrhu strani.</figcaption>
+    </figure>
+    
+    <div class="alert">Repozitorij CLARIN.SI je konfiguriran tako, da se vnosu, takoj ko je
+      ustvarjen, dodeli trajni identifikator (persistent identifier, PID) po sistemu "handle". To
+      pomeni, da se lahko nato v podatkih, ki bodo naloženi v enem od naslednjih korakov,
+      sklicujete na ta trajni identifikator. To je koristno predvsem v primeru podatkov z licenco
+      CC, saj lahko uporabniki, ki bodo takšne podatke prejeli posredno, še vedno najdejo vnos –
+      in s tem njegove metapodatke - v repozitoriju.</div>
+  </div>
+  
+  <div id="screen1" style="margin-bottom: 20px;">
+    <h3>Zaslon 1: Osnovne informacije o vnosu</h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika6.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 6. Osnovne informacije o vnosu.</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Ustvarili ste nov vnos v delotoku. V
+      naslednjih nekaj korakih boste dodali podrobnosti o vnosu (oziroma njegove metapodatke) in
+      naložili datoteke. Najprej izberite vrsto vira, ki ga boste vnesli v repozitorij.</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Kliknite na enega izmed virov, ki najbolj
+      ustrezajo naravi vašega vira, nato vnesite osnovne podatke o vnosu.</p>
+    
+    <div class="alert">Pozor: v repozitoriju CLARIN.SI morajo biti vsi metapodatki (torej vse
+      informacije o vnosu, kot so opisane v nadaljevanju) v angleškem jeziku.</div>
+    
+    <div id="title" style="margin-bottom: 20px;">
+      <h4>Naslov</h4>
+      <div class="alert">
+        <p style="margin-top: 10px; margin-bottom: 10px;">Naslov naj vsebuje zelo kratek opis
+          vira, ki naj mu sledi njegovo dejansko ime, ki je v večini primerov akronim. Če obstaja
+          možnost, da boste v prihodnosti naložili novo različico vira, naslovu dodajte oznako
+          "1.0" in s tem označite, da gre za nov vir. Razen prve besede akronima, imen jezikov, in
+          (če so) lastnih imen, vse ostale besede v naslovu pišite z malo začetnico. Nekaj
+          primerov iz repozitorija CLARIN.SI:</p>
+        <ul>
+          <li>Automatically sentiment annotated Slovenian news corpus AutoSentiNews 1.0</li>
+          <li>Concreteness and imageability lexicon MEGA.HR-Crossling</li>
+          <li>Dictionary of Slovenian Particles</li>
+        </ul>
+      </div>
+    </div>
+    <div id="references">
+      <h4>Reference</h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika7.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 7. Polja z URL povezavami na reference.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">V naslednja polja (<b>URL projekta, Demo
+          URL, Dokumentirano v</b>) vnesite URL kjer ta za vnos obstaja:</p>
+      <div class="alert">
+        <ul>
+          <li>"URL projekta" poda URL projekta, v sklopu katerega je bil vir ustvarjen.</li>
+          <li>"Demo URL" poda URL spletne aplikacije, kjer je je vir dostopen za npr. branje ali
+            analizo. Na primer, če ste naložili korpus, je ta morda na voljo v digitalni
+            knjižnici, strojno berljivi slovar na slovarskem portalu, računalniški program pa prek
+            API-ja.</li>
+          <li>"Dokumentirano v" vsebuje URL(je) naslovov publikacij, v katerih je vnos
+            predstavljen. Če ima publikacija DOI URL, je potrebno uporabiti tega. </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="dateIssued">
+      <h4>Datum izdaje</h4>
+      
+      <div class="alert">V polju "Datum izdaje" boste tipično navedli datum, ko vnos oddate. Datum
+        mora biti natančen, na primer 2020-11-01. V primeru kjer je bil vir že
+        prehodno objavljen drugje, vnesite datum originalne izdaje vira.</div>
+    </div>
+  </div>
+  
+  <div id="screen2">
+    <h3>Zaslon 2: Sodelujoči posamezniki in organizacije </h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika8.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 8. Vpis posameznikov in organizacij, ki so sodelovale pri ustvarjanju
+        vira.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">Naslednji zaslon vsebuje polja za opis
+      posameznikov, organizacij in projektov, ki so bili vključeni v izdelavo vira.</p>
+    
+    <div id="authors">
+      <h4>Avtorji in založniki vira</h4>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Najprej vnesemo avtorja/je vira, tj.
+        posameznike, ki so sodelovali pri izdelavi vira. Lastno ime in priimek sta vpisana v
+        ločeni polji.</p>
+      
+      <div class="alert">Uporabite pravilen način črkovanja imen, tj. ne zamenjujte črk z
+        naglasnimi znamenji z njihovimi ASCII ekvivalenti:, "Šubic" je pravilen način zapisa,
+        "Subic" ni.</div>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Sledijo založniki vira. Z uporabo funkcije
+        samodokončanja poskusite najti ime vaše institucije v spustnem seznamu. Če ta še ne
+        obstaja, v polje vnesite ime založniške institucije.</p>
+      
+      <div class="alert">Pri založniku uporabite največ dvonivojsko shemo poimenovanja. Na primer:
+	<ul>
+          <li>Faculty of Electrical Engineering and Computer Science, University of Maribor</li>
+          <li>Faculty of Arts, University of Ljubljana</li>
+          <li>Institute of Contemporary History</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="contactPerson">
+      <h4>Kontaktna oseba</h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika9.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 9. Polja za kontaktno osebo vira.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">V naslednjem delu navedite ime,
+        elektronski naslov in institucijo <b>kontaktne osebe</b> za ta vnos. Kontaktna oseba je tipično
+        (vendar ne vedno), oseba, ki oddaja vnos. Možno je vnesti tudi več kontaktnih oseb.</p>
+    </div>
+    
+    <div id="funding">
+      <h4>Financiranje</h4>
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika10.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 10. Financiranje vira.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Zadnja polja na tem zaslonu služijo vnosu
+        podatkov o projektih, ki so financirali izdelavo podatkov. Najprej izberite vrsto
+        financiranja, nato kodo projekta, organizacijo, ki je projekt financirala in ime projekta.
+        Seveda je lahko izdelavo vira financiralo več projektov.</p>
+      
+      <div class="alert">Če vnesete "financiranje EU", morate pri tem paziti, da izberete pravilno
+        kodo projekta, saj se bo ta vnos avtomatično povezal z
+	<a href="https://explore.openaire.eu/search/dataprovider?datasourceId=re3data_____::fe0d76581a60e1287a93e2ed2cb29339">OpenAIRE</a></div>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Nekaj primerov iz obstoječih vnosov:</p>
+        <ul>
+          <li>EC 610704 "SIMPOL"</li>
+          <li>Ministry of Culture C3340-20-278001 "Development of Slovene in a Digital Environment"</li>
+          <li>ARRS (Slovenian Research Agency) P2-103 "Knowledge Technologies"</li>
+        </ul>
+      <p style="margin-top: 10px; margin-bottom: 10px;">Ko ste vnesli vse informacije na drugem
+        zaslonu, kliknite "Naprej" in nadaljujte z naslednjim korakom.</p>
+    </div>
+  </div>
+  
+  <div id="screen3">
+    <h3>Zaslon 3: Opis vira</h3>
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika11.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 11. Opis vira.</figcaption>
+      </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Informacije, vnesene na tem zaslonu,
+      opisujejo vir in so zelo pomembne za vse tiste, ki bi radi poiskali in uporabili vaš
+      vir.</p>
+    
+    <div id="description">
+      <h4>Opis</h4>
+      
+      <div class="alert">
+        <p style="margin-top: 10px; margin-bottom: 10px;">Opis vira naj vsebuje približno pol
+          strani besedila, ki opiše vsebino vira, poda okvirno velikost vira in opis osnovne
+          strukture podatkov v viru. Kjer je možno, naj opis vsebuje tudi podatek o ciljni uporabi
+          vira. Za korpuse naj opis vsebuje tudi časoven okvir publikacije zajetih besedil, npr.
+          "This corpus contains newspaper articles from 2001 to 2019". Če želite v opisu omeniti
+          bibliografske navedbe (predvsem ta publikacije, ki niso dostopne na spletu) jih dodajte
+          na koncu opisa, vsako v svojem odstavku. Opis je možno dopolniti tudi z URL naslovi na
+          spletne strani, ki opisujejo različne vidike vira, npr. na nabor jezikoslovnih oznak, ki
+          je bil uporabljen pri označevanju.
+	  Če je vir nova različica že obstoječega vira, mora zadnji odstavek opisa vsaj na kratko
+	  našteti glavne razlike med obema različicama.
+	</p>
 
-        <h2>How to Deposit</h2>
-        <div class="alert">Only authenticated users can deposit items. If you cannot find your home organisation in the
-                Login dialog list of organisations then register at <a href="https://user.clarin.eu/user/register">clarin.eu</a>
-                and authenticate using "clarin.eu website account". In case you cannot use any authentication method above or
-                if you encounter a problem, do not hesitate to
-                contact our <a class="helpdesk-tolink" href="#">Help Desk</a> and we can create a local account for you.
-        </div>
-        <div>
-            The guide below describes new submissions, if what you plan to submit is a new version of a resource
-            already available in the repository see the
-            <a href="https://github.com/ufal/clarin-dspace/wiki/New-Version-Guide">new version guide</a>.
-        </div>
-    <div id="step1" style="margin-bottom: 20px;">
-                <h3>Step 1: Login</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">To start a new submission you have to login first. Click Login under My Account in the right menu panel.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step1.png" class="print_screen_img" alt="{{'static.deposit.image.step-1' | translate}}" />
-			<figcaption>Fig1. Menu Login</figcaption>
-		</figure>
-        </div>
-
-        <div id="step2" style="margin-bottom: 0;">
-                <h3>Step 2: Starting a new submission</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Now you have a new menu item 'Submissions' under My Account. Click on Submissions to go to the Submissions screen.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step2.png" class="print_screen_img" alt="{{'static.deposit.image.step-2' | translate}}"/>
-			<figcaption>Fig2. Menu Submissions</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Now you should be on the main Submission and Workflow tasks page where you can view your incomplete/archive submissions. Click on the 'Start another submission' link to start a new Submission.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step2_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-2-1' | translate}}"/>
-			<figcaption>Fig3. Starting a submission</figcaption>
-		</figure>
-        </div>
-
-        <div id="step3" style="margin-bottom: 20px;">
-                <h3>Step 3: Select type of your submission</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">You have initiated a new workflow item. In the next few steps you will provide the details about the item and upload content files. First select the type of the resource you are about to submit.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step3.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-3' | translate}}"/>
-			<figcaption>Fig4. Submission info</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Click on one of the type buttons e.g. Corpus. Proceed with filling the basic information such as the title. Click Next to continue the following step.</p>
-        </div>
-
-        <div id="step4" style="margin-bottom: 20px;">
-                <h3>Step 4: Describe your item</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">In the following two steps you will provide more details for your item. First describe the people, organization and projects involved with the item.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step4.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4' | translate}}"/>
-			<figcaption>Fig5. Describing item - people and organizations</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Next add your description, fill the language, etc.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step4_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4-1' | translate}}" />
-			<figcaption>Fig6. Describing item - resource details</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Once you filled the necessary information, click Next to upload the content files.</p>
-        </div>
-
-        <div id="step5" style="margin-bottom: 20px;">
-                <h3>Step 5: Upload files</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">In this step you will upload the content files of your submission. If there are no files, you can skip this step by clicking
-                        Next. The files can be added by clicking the browse button or you can drag and drop files in the gray area with text 'Drag and Drop file(s) here'.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step5.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-5' | translate}}" />
-			<figcaption>Fig7. Uploading file</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Selecting files will open a dialog box, where you can enter the description of each file. To begin the file upload
-click 'Start Upload'.</p>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Once the file(s) upload is done, press OK to close the dialog box. You can add more files or delete/modify the already uploaded ones,
-                        after you finish press Next to continue with the License selection.</p>
-        </div>
-
-        <div id="step6" style="margin-bottom: 20px;">
-                <h3>Step 6: Select Licenses</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">If you uploaded at least one file, you must select
-                        a license under which you want your resources to be distributed in this step (data without
-                        license is unusable because a user does not know how can he/she use it!).
-                        Please read the <a href="./contract">Distribution agreement carefully</a>
-                        and click the red box to indicate your agreement (it will turn green).
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-1' | translate}}" />
-				<figcaption>Fig8. Distribution license agreement</figcaption>
-			</figure>
-                Select the appropriate license from the dropdown list, if you already have decided on the license;
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_2.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-2' | translate}}" />
-				<figcaption>Fig9. Selecting license</figcaption>
-			</figure>
-                or use the OPEN License Selector, which will help you choose by asking few questions about the submission and your requirements
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_3.png" id="license_selector" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-3' | translate}}" />
-				<figcaption>Fig10. OPEN License Selector</figcaption>
-			</figure>
-                        If none of the licenses suits your needs contact our
-                        <a class="helpdesk-tolink" href="#">Help Desk</a>.</p>
-
-                <div class="alert alert-warning">
-                        <h3>For datasets that require license signing</h3>
-
-                        While we prefer open data and open source software, we understand it is not always possible.
-                        We can ensure that users must authenticate and sign a license in order to download your data
-                        (see <a href="./item-lifecycle#restricted-submissions">Restricted Submissions</a>).
-                        If you need more information about the users than the fact that they authenticated via a
-                        university (or similar), we can ask for some specific attributes similar to standard
-                        web forms. This makes sense mostly for data with "no redistribution" clause in their license.
-                </div>
-
-                <p style="margin-top: 10px; margin-bottom: 10px;">Click Next to continue.</p>
-        </div>
-
-        <div id="step7" style="margin-bottom: 20px;">
-                <h3>Step 7: Leave a note</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">You can leave a note for the reviewer in this step.</p>
-        </div>
-
-        <div id="step8" style="margin-bottom: 20px;">
-                <h3>Step 8: Review your submission</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">In this step you will review your submission before submitting it. Review page contains a sub-review panel for each of the
-                step you have filled in before. If you want to change any field in a particular step just click Correct one of these and it will
-                take you directly to the particular step page. Once you verify all the detail, submission can be made by clicking Complete Submission
-                or you can click Save &amp; Exit to save the submission for continue working on it later.</p>
-        </div>
-
-        <div id="step9" style="margin-bottom: 20px;">
-                <h3>Step 9: Submit</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">Once you click the Complete Submission in the review step, item will be submitted for the reviewing by the editors. Once
-                the editors approve the item it will appear in the repository. In case of any query regarding the submission, editors will contact
-                you for the further detail.</p>
-        </div>
+	  <p style="margin-top: 10px; margin-bottom: 10px;">Kliknite na spodnje povezave in si oglejte nekaj
+          primerov opisov:</p>
+	
+        <ul>
+          <li><a href="http://hdl.handle.net/11356/1167">Slovenian parliamentary corpus SlovParl 2.0.</a></li>
+          <li><a href="http://hdl.handle.net/11356/1222">Spoken corpus Gos VideoLectures 4.0</a></li>
+          <li><a href="http://hdl.handle.net/11356/1230">Morphological lexicon Sloleks 2.0.</a></li>
+          <li><a href="http://hdl.handle.net/11356/1136">Dictionary of the Slovenian Normative Guide</a></li>
+          <li><a href="http://hdl.handle.net/11356/1373">The CLASSLA-StanfordNLP model for morphosyntactic annotation of standard Macedonian 1.0.</a></li>
+          <li><a href="http://hdl.handle.net/11356/1284">Dependency tree extraction tool STARK</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="language">
+      <h4>Jezik</h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika12.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 12. Vnos jezika vira.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">V to polje vnesete jezik oz. jezike, ki
+        jih vsebujejo podatki vira. Začnite tipkati ime jezika in uporabite obrazec za
+        samodokončanje, ki se bo prikazal. Po repozitoriju CLARIN.SI lahko tudi brskate po jeziku
+        virov (<a href="https://www.clarin.si/repository/xmlui/browse?type=language&amp;locale-attribute=sl">Brskanje po jeziku</a>).</p>
+      
+      <div class="alert">Če je jezik vašega vira pravzaprav narečje, izberite uradni jezik, iz
+        katerega narečje izhaja (seveda pa je dejstvo, da gre za narečje, potrebno omeniti v
+        naslovu in opisu vira). Za večjezične vire lahko vpišete več jezikov. Če je vir
+        računalniški program ("toolResource"), ki je jezikovno neodvisen, je pustite polje za
+        jezik prazno.</div>
+    </div>
+    
+    <div id="keywords">
+      <h4>Ključne besede</h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika13.png" class="print_screen_img" width="800"/>
+        <figcaption>Slike 13. Vnos ključnih besed za vir.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">V polje je potrebno vpisati vsaj eno
+        ključno besedo, vendar jih je bolje vpisati več. V repozitoriju je tudi možno brskati
+	<a href="https://www.clarin.si/repository/xmlui/browse?type=subject&amp;locale-attribute=sl">po ključnih besedah</a></p>
+      
+      <div class="alert">Če je le mogoče, izberite ključne besede iz nabora v spustnem seznamu,
+        ki se pojavi, ko začnete tipkati. Pazite, da so vse ključne besede (razen lastnoimenskih
+        samostalnikov) zapisane z malo začetnico. V to polje ne vpisujemo imen jezikov, saj so ti
+        že vsebovani v za to namenjenem polju.</div>
+    </div>
+    
+    <div id="size">
+      <h4>Velikost </h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika14.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 14. Vpis kvantitativnih podatkov za vir.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Velikost vira je potrebno zapisati v čim
+        več smiselnih kategorijah.</p>
+      
+      <div class="alert">Številke naj bodo točne in naj sledijo iz enostavnega štetja znakov,
+        vrstic, elementov XML itd. Na ta način lahko služijo tudi kot preprosta kontrolna vsota
+        (checksum) za vir.</div>
+    </div>
+    
+    <div id="mediaType">
+      <h4>Vrsta medija</h4>
+      
+      <figure class="print_screen_figure">
+        <img src="../themes/UFAL/images/deposit/slika15.png" class="print_screen_img" width="800"/>
+        <figcaption>Slika 15. Kategorizacija vrste medija vira.</figcaption>
+      </figure>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Tu je iz spustnega seznama potrebno
+        izbrati natančnejšo kategorijo vira.</p>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Ko zaključite z izpolnjevanjem potrebnih
+        informacij, kliknite "Naprej", da v naslednjem koraku naložite datoteke.</p>
+    </div>
+  </div>
+  
+  <div id="screen4">
+    <h3>Zaslon 4: Nalaganje datotek</h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika16.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 16. Nalaganje datotek.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">V tem koraku boste naložili datoteke z
+      vsebino svojega vnosa.</p>
+    
+    <div class="alert">CLARIN.SI ne sprejema vnosov, ki vsebujejo zgolj metapodatke vnosa, oziroma
+      ne sprejema vnosov brez datotek. Oddane datoteke naj sledijo <a href="data">Smernicam za oddajo
+        podatkov CLARIN.SI</a>.</div>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Datoteko lahko dodate tako, da kliknete na
+      gumb za brskanje in želeno datoteko izberete v računalniku, lahko pa jo neposredno povlečete
+      in spustite v sivo območje z besedilom "Povlecite in spustite datoteke tukaj" (Drag and Drop
+      file(s) here). Datoteko lahko naložite tudi z URLja.
+      Izbira datotek odpre pogovorno okno, kamor morate vpisati kratek opis za vsako datoteko.
+      Da začnete proces nalaganja, kliknite "Začni prenos".</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Nalaganje datotek, večjih kot 2 GB, zahteva
+      posebno obdelavo. Prosimo, obrnite se na <a class="helpdesk-tolink" href="#">Službo za pomoč
+        uporabnikom</a>.</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Ko je nalaganje datotek končano, kliknite
+      OK, da zaprete pogovorno okno. Dodate lahko več datotek, izbrišete že naložene datoteke, ali
+      spremenite njihov opis ali zaporedje prikaza. Ko zaključite, pritisnite "Naprej", da v
+      naslednjem koraku nadaljujete z izbiro licence za vaš vnos</p>
+  </div>
+  
+  <div id="screen5">
+    <h3>Zaslon 5: Izbira licence </h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika17.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 17. Sporazum o distribuciji virov.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">Ko naložite datoteke, je potrebno izbrati
+      primerno licenco, pod katero želite distribuirati vaš vnos. Prosimo, pozorno preberite
+      <a href="./contract">Sporazum o distribuciji virov</a> in kliknite na rdeče polje, da
+      označite svoje soglasje (polje se bo obarvalo zeleno).</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Temu sledi izbira ustrezne licence za
+      podatke.</p>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika18.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 18. Izbira licence preko izbirnika licence "OPEN Licence Selector" ali
+        izbira licence s spustnega seznama.</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Vmesnik ponuja dva načina izbire licence.
+      Prvi način poteka preko izbirnika licence "OPEN Licence Selector", ki vam pomaga pri izbiri
+      licence tako, da odgovorite na različna vprašanja o vašem vnosu in vaših zahtevah.</p>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika19.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 19. Izbirnik licence OPEN License Selector.</figcaption>
+      </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">Drugi način je izbira licence s spustnega
+      seznama pod "Izberite licence", kjer lahko tudi vnesete nekaj besed iz zahtevane licence, da
+      zožite izbor. Lahko tudi brskate po strani z
+      <a href="https://www.clarin.si/repository/xmlui/page/licenses?locale-attribute=sl">razpoložljivimi
+	licencami CLARIN.SI</a>. Če nobena od obstoječih licenc ne ustreza vašim
+      zahtevam, se obrnite na našo <a class="helpdesk-tolink" href="#">Službo za pomoč
+        uporabnikom</a>.</p>
+    
+    <div id="datasets">
+      <h4>Nabori podatkov, ki zahtevajo podpis licence </h4>
+      
+      <p style="margin-top: 10px; margin-bottom: 10px;">Čeprav CLARIN.SI preferira odprte podatke
+        in odprtokodne programe, razumemo, da to ni vedno mogoče. Zato vam lahko zagotovimo, da
+        morajo uporabniki za prenos vaših podatkov opraviti avtentikacijo in podpisati licenco
+        (glejte <a href="https://www.clarin.si/repository/xmlui/page/item-lifecycle?locale-attribute=sl#restricted-submissions">Omejeni
+	  vnosi</a>). Če potrebujete več informacij o uporabniku kot samo avtentikacijo
+        preko njihove matičen institucije, lahko uporabnike zaprosimo za nekatere specifične
+        atribute, ki so podobni standardnim internetnim obrazcem. To je smiselno predvsem za
+        podatke, ki imajo v svoji licenci dodano klavzulo "brez ponovne distribucije".</p>
+    </div>
+  </div>
+  
+  <div id="screen6">
+    <h3>Zaslon 6: Opombe za urednika </h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika20.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 20. Zaslon z opombami.</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Če imate dodatne informacije o vnosu, ki
+      jih želite posredovati urednikom, lahko pustite sporočilo za urednike/pregledovalce.</p>
+  </div>
+  
+  <div id="screen7">
+    <h3>Zaslon 7: Pregled in oddaja vnosa </h3>
+    
+    <figure class="print_screen_figure">
+      <img src="../themes/UFAL/images/deposit/slika21.png" class="print_screen_img" width="800"/>
+      <figcaption>Slika 21. Pregled vnosa.</figcaption>
+    </figure>
+      
+    <p style="margin-top: 10px; margin-bottom: 10px;">V tem koraku pregledate svoj vnos pred
+      oddajo. Stran za pregled vnosa vsebuje podokno za vsakega izmed korakov, ki ste ga
+      izpolnili. Če želite spremeniti katerokoli polje v določenem koraku, kliknite "Popravi enega
+      izmed teh" in popeljalo vas bo neposredno na ustrezni zaslon kjer lahko uredite vaš vnos. Ko
+      preverite vse podrobnosti vnosa, lahko oddajo vnosa zaključite z klikom na "Oddaj vnos".</p>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">Po v koraku pregleda kliknete na "Oddaj
+      vnos", nakar bo vnos poslan v uredniški pregled. Ko bodo uredniki vnos odobrili, se bo ta
+      pojavil v repozitoriju. V primeru, da uredniki v vašem vnosu odkrijejo težave, vnos uredniki
+      zavrnejo in pojasnijo, zakaj je bil vnos zavrnjen in kaj je potrebno popraviti, da bo vnos
+      sprejemljiv.</p>
+  </div>
 </div>
