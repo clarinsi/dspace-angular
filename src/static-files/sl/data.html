@@ -1,0 +1,285 @@
+<body>
+  <div style="width: 100%">
+    <style scoped="scoped">
+      .print_screen_figure{
+      text-align: center;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      }
+      .print_screen_figure figcaption{
+      padding-top: 5px;
+      }
+      .print_screen_img{
+      box-shadow: 3px 3px 1px #ccc;
+      -webkit-box-shadow: 3px 3px 1px
+      #ccc;
+      -moz-box-shadow: 3px 3px 1px #ccc;
+      }
+      #toc_container{
+      background: #f9f9f9 none repeat scroll 0 0;
+      border: 1px solid #aaa;
+      display: table;
+      font-size: 95%;
+      margin-bottom: 1em;
+      padding: 10px;
+      width: auto;
+      }
+      .toc_title{
+      font-weight: 700;
+      text-align: center;
+      }
+      
+      #toc_container li,
+      #toc_container ul,
+      #toc_container ul li{
+      list-style: outside none none !important;
+      }</style>
+    <h2>Navodila za vnos podatkov v repozitorij CLARIN.SI</h2>
+    <div id="intro">
+      <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij CLARIN.SI praviloma ne sprejema vnosov brez datotek
+	(tj. brez bitnih tokov, ki so dodani vnosu).
+	V tem dokumentu so zbrani napotki glede ustrezne strukture deponiranih jezikovnih virov, primernih formatov
+	podatkov in zahtevanih formatov označenih besedilnih datotek.
+        Seznam formatov podatkov, ki jih sprejema CLARIN.SI je na voljo tudi v 
+	<a href="https://standards.clarin.eu/sis/views/view-centre.xq?id=CLARIN.SI">vnosu za CLARIN.SI</a>
+	v okviru "CLARIN Standards Information System".
+      </p>
+    </div>
+	<div id="toc_container">
+      <p class="toc_title">Vsebina</p>
+      <ul class="toc_list">
+        <li>
+          <a href="#basics">Osnovne lastnosti datotek</a>
+        </li>
+        <ul>
+          <li>
+            <a href="#fileNames">Poimenovanje datotek in imenikov</a>
+          </li>
+          <li>
+            <a href="#fileExtensions">Pripone datotek</a>
+          </li>
+          <li>
+            <a href="#fileCompression">Stiskanje datotek</a>
+          </li>
+          <li>
+            <a href="#bitstreams">Vnosi z več bitnimi tokovi</a>
+          </li>
+        </ul>
+        <li>
+          <a href="#controledValues">Nadzorovane vrednosti</a>
+          <ul>
+            <li>
+              <a href="#LanguageCodes">Kode za jezike</a>
+            </li>
+            <li>
+              <a href="#DatesTimes">Datum in čas</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#binary">Ustrezni binarni formati</a>
+        </li>
+        <li>
+          <a href="#encodingFiles">Zapis besedilnih datotek</a>
+        </li>
+        <li>
+          <ul>
+            <li>
+              <a href="#character">Kodiranje znakov</a>
+            </li>
+            <li>
+              <a href="#programs">Programi</a>
+            </li>
+            <li>
+              <a href="#standardText">Standardni formati, ki temeljijo na besedilu</a>
+            </li>
+            <li>
+              <a href="#plainText">Datoteke z golim besedilom</a>
+            </li>
+            <li>
+              <a href="#tabular">Tabelarični podatki</a>
+            </li>
+            <li>
+              <a href="#html">Dokumenti HTML</a>
+            </li>
+            <li>
+              <a href="#xml">Dokumenti XML</a>
+            </li>
+            <li>
+              <a href="#tei">Dokumenti TEI</a>
+            </li>
+            <li>
+              <a href="#linguistic">Nabori oznak za jezikoslovno označevanje</a>
+            </li>
+          </ul>
+			  
+														 
+        </li>
+        <li>
+																  
+			   
+			  
+				
+				  
+          <a href="#references">Viri</a>
+				   
+				  
+												
+				   
+				  
+																	   
+				   
+				  
+														 
+				   
+				  
+												   
+				   
+				  
+												  
+				   
+				  
+												
+        </li>
+				  
+												
+				   
+				 
+			   
+			 
+      </ul>
+    </div>
+    <div id="basics" style="margin-bottom: 20px;">
+      <h3>Osnovne lastnosti datotek</h3>
+      <div id="fileNames">
+        <h4>Poimenovanje datotek in imenikov</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Imena datotek in imenikov (map) lahko vsebujejo samo znake ASCII, in sicer črke, številke, vezaj (»-«) in piko (».«). Naslednji znaki niso dovoljeni: presledek, podčrtaj, oklepaj, narekovaj, znak za dolar, poševnica, dvopičje in druga ločila (razen vezaja in pike), naglašene črke in drugi znaki, ki niso del nabora ASCII. <i>Uporaba kombinacije malih in velikih črk je dovoljena.</i> Primeri ustreznih poimenovanj so »semcro.v1.zip«, »ParlaMint-HR-S08.xml«, »SuperGLUE-statistics.tsv«.</p>
+      </div>
+      <div id="fileExtensions">
+        <h4>Pripone datotek</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij zahteva uporabo standardnih oziroma splošno priznanih pripon datotek, kot so ».txt«, ».xml«, ».jpg«. Če želite v poimenovanje vključiti informacije o tem, da je besedilo zapisano v standardnem kodiranju ali da arhivska datoteka vsebuje določen tip datotek, lahko uporabite dvojno pripono kot v primerih »semcro.tei.xml« ali »semcro.TEI.zip«.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Zaželene pripone različnih formatov so navedene pri opisih posameznih vrst datotek.</p>
+      </div>
+      <div id="fileCompression">
+        <h4>Stiskanje datotek</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;"> Jezikovni viri, ki so deponirani v repozitorij, so pogosto veliki in/ali zajemajo več datotek. V tem primeru naj bo vir stisnjen in dodan vnosu v obliki ene datoteke. Stisniti je treba celoten imenik in stisnjena datoteka naj se imenuje enako kot vsebovani imenik. Na primer, stisnjena datoteka »semcro.zip« se mora odpreti v imenik »semcro/«, v katerem so zbrane datoteke in/ali podimeniki. Priporočeno je, da imenik vsebuje tudi datoteko README, v kateri sta zapisana ime vira in njegov stalni identifikator. Tako preprečimo, da bi se izgubili podatki o izvoru virov, objavljenih pod licencami Creative Commons. Poleg tega je priporočeno tudi, da stisnjena datoteka ne vsebuje skritih datotek (kot so na primer datoteke, ki jih ustvari operacijski sistem MAC).</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Zaželen format stisnjenih datotek na repozitoriju CLARIN.SI je ZIP (.zip), sprejemamo pa tudi druge oblike stiskanja vsebnikov, kot so stisnjeni format TAR (.tgz) ali format GNU ZIP (.gz) za stiskanje ene datoteke.</p>
+      </div>
+      <div id="bitstreams">
+        <h4>Vnosi z več bitnimi tokovi</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;"> Vnos lahko poleg izvornih podatkov vključuje tudi podatke v izvedenih formatih, spremno dokumentacijo ali podatke, ločene na več datotek. Pri velikih vnosih je namreč smiselno razdeliti podatke, saj posamezna datoteka ne sme biti večja od (približno) 5 GB. </p>
+        <p style="margin-top: 10px; margin-bottom: 10px;"> V tem primeru so lahko podatki, ki se jih doda vnosu, razdeljeni na več (po možnosti stisnjenih) datotek. Sledite zgledu naslednjih vnosov iz repozitorija CLARIN.SI, pri katerih so podatki razdeljeni na več bitnih tokov iz različnih razlogov:<ul>
+            <li><a href="http://hdl.handle.net/11356/1084">Učni korpus računalniško posredovane komunikacije Janes-Norm 1.2</a></li>
+            <li><a href="http://hdl.handle.net/11356/1379">Slovar nemških izposojenk v slovenskem jeziku Arcticae horulae</a></li>
+            <li><a href="http://hdl.handle.net/11356/1222">Govorni korpus Gos VideoLectures 4.0 (zvočni zapis)</a></li>
+          </ul>
+		</p>
+      </div>
+    </div>
+    <div id="controledValues">
+      <h3>Nadzorovane vrednosti</h3>
+      <div id="LanguageCodes">
+        <h4>Kode za jezike</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Če se podatki (ali poimenovanje datotek) nanašajo na določen jezik, je treba namesto imen jezikov uporabiti kode zanje. Najustreznejše so dvočrkovne kode po <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a>, če za določen jezik ne obstajajo, pa se naj uporabi tročrkovne kode po <a href="https://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>, znane tudi kot kode T, ali po <a href="https://en.wikipedia.org/wiki/ISO_639-3">ISO 639-3</a>, ki zajema še več kod kot ISO 639-2. Čeprav se vsi trije standardi osredotočajo na sodobne standardne jezike, ISO 639-2 in ISO 639-3 pokrivata tudi starejše različice nekaterih jezikov.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Če jezikovni vir vsebuje narečja ali starejše različice jezika, ki jih standardi ISO ne pokrivajo, se naj uporabi standard <a href="https://tools.ietf.org/html/bcp47">BCP 47</a> (Oznake za identificiranje jezikov – Tags for for Identifying Languages). Po BCP (Best Current Practice) je treba uporabiti primerno oznako iz <a href="https://www.iana.org/assignments/language-subtag-registry">registra IANA za variantne podoznake</a>. Če register ne vsebuje ustrezne oznake jezikovne različice, sledite pravilom za ustvarjanje neregistrirane oznake, in sicer oznaka naj se začne z oznako za jezik (npr. »sl« za slovenščino), ki ji dodajte niz »-x-« (za »neregistrirano«) in poljubno pripono v naboru ASCII (npr. »prekmurje« za prekmurščino), in tako dobite oznako »sl-x-prekmurje«.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Več informacij o tem, kako izbrati ustrezno kodo za jezik (ali jezikovno različico), najdete v dokumentu konzorcija W3C »<a href="https://www.w3.org/International/questions/qa-choosing-language-tags">Izbiranje kod za jezik</a>«.</p>
+      </div>
+      <div id="DatesTimes">
+        <h4>Datum in čas</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Vsi zapisi datuma in časa v kontekstu, namenjenem za strojno obdelavo, morajo slediti standardu <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>, torej se datume zapiše kot »2020-12-28«, čas kot »23:21:21« in kombinacijo obeh kot »2020-12-28T23:21:12«. Če je časovni pas pomemben podatek, se ga lahko določi s pripono »Z«, ki se nanaša na koordinirani univerzalni čas (UTC, večinoma je enak greenwiškemu srednjemu času – GMT), in s časovnim zamikom od univerzalnega časa, na primer 23:21:12Z+01:00 za Slovenijo in večino drugih držav iz EU.</p>
+      </div>
+    </div>
+    <div id="binary">
+      <h3>Ustrezni binarni formati</h3>
+      <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij CLARIN.SI sprejema podatke v standardnih in/ali splošno znanih
+	odprtih formatih.
+        Seznam formatov, ki jih sprejema CLARIN.SI je na voljo v 
+	<a href="https://standards.clarin.eu/sis/views/view-centre.xq?id=CLARIN.SI">vnosu za CLARIN.SI</a>
+	v okviru "CLARIN Standards Information System", v nadaljevanju pa naštejemo sprejete format glede na njihov namen.</p>
+
+      <p style="margin-top: 10px; margin-bottom: 10px;">Pri večini vnosov v repozitorij gre za (večinoma) označene ali drugače
+	strukturirane besedilne podatke. Ker zanje velja več zahtev kot za druge datoteke, jih podrobneje obravnavamo v nadaljevanju.
+	Spodaj pa so našteti drugi (binarni) formati, ki jih repozitorij CLARIN.SI sprejema:
+	<ul>
+          <li><b>Stiskanje in paketiranje virov:</b> GNU ZIP (.gz), ZIP (.zip), TAR (.tar), stisnjeni format TAR (.tgz).</li>
+          <li><b>Datoteke dokumentov:</b> dokumenti, pripravljeni na tisk, so lahko deponirani v formatu PDF (.pdf), vendar v tem formatu sprejemamo samo spremno dokumentacijo (objavljeni članki ali poročila o naboru podatkov, navodila za označevanje itn.), glavnega nabora podatkov pa ne. Izjema so faksimili, ki so lahko deponirani v obliki zapisa slike ali v formatu PDF. </li>
+          <li><b>Jezikovni modeli:</b> če orodja za označevanje ali druga odprtokodna orodja za analizo jezika ustvarjajo samo binarne jezikovne modele ali jih uporabljajo, jih repozitorij sprejema, vendar pa so bolj zaželene različice modelov v besedilnem formatu.</li>
+          <li><b>Zvočne datoteke:</b> Wave (.wav), FLAC (.flac), AIFF (.aiff), avdio format MPEG 4 (.m4a), MP3 (.mp3), RAW (.raw). <i>Pri tem je treba poudariti, da je pri zvočnih datotekah zaželeno brezizgubno stiskanje oziroma odpoved stiskanju podatkov</i>.</li>
+          <li><b>Slikovne datoteke:</b> TIFF (.tiff), GIF (.gif), JPEG (.jpg), PNG (.png), SVG (.svg). <i> Pri tem je treba poudariti, da je pri slikovnih datotekah zaželeno brezizgubno stiskanje oziroma odpoved stiskanju podatkov</i>.</li>
+          <li><b>Videodatoteke:</b> video format MPEG (.mpg, .mpeg, .mp4), AVI (.avi), Motion JPEG 2000 (.m2j).</li>
+        </ul>
+      </p>
+      <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij CLARIN.SI praviloma ne sprejema formatov urejevalnikov besedil ali programov za preglednice, kot so datoteke v formatih programov <b>Microsoft Word</b> ali <b>Excel</b>, prav tako pa ne sprejema formatov <b>binarnih programov</b>. Po posvetu s <a class="helpdesk-tolink" href="#">Službo za pomoč uporabnikom</a> pred samim vnosom so lahko takšni podatki izjemoma vseeno sprejeti. Če je deponiranje datotek formatov programov Word ali Excel dovoljeno, morajo biti zapisane v jeziku XML (torej morajo imeti pripono .docx ali .xlsx). Primerljivi formati ODF-programa <b>OpenOffice</b>, ki temeljijo na jeziku XML, so v tem primeru seveda prav tako sprejemljivi.</p>
+    </div>
+    <div id="encodingFiles">
+      <h3>Zapis besedilnih datotek</h3>
+      <p style="margin-top: 10px; margin-bottom: 10px;">Ker večina vnosov v repozitorij vsebuje predvsem besedilne datoteke (vključno s številskimi podatki, izvornimi programskimi datotekami, datotekami v formatu XML itn.), sledijo podrobnejša navodila za ustrezno kodiranje besedilnih datotek.</p>
+      <div id="character">
+        <h4>Kodiranje znakov</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;"> Repozitorij CLARIN.SI sprejema samo datoteke v obliki <b>Unicode</b>. Datotek, kodiranih z 8-bitnim zapisom znakov, kot so zapis ISO 8859 ali kodne tabele operacijskega sistema Windows, ne sprejemamo. Datoteka v obliki Unicode naj bo kodirana z naborom znakov <b>UTF-8</b>. Izjeme so besedilne datoteke v nelatiničnih pisavah, kot je japonščina, pri katerih je dovoljen nabor znakov UTF-16.</p>
+      </div>
+      <div id="programs">
+        <h4>Programi</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij sprejema <b>izvorno kodo</b>, tj. programe v splošno znanih programskih jezikih, kot so Python (.py), Perl (.pl), R (.r), C (.c), XSLT (.xsl) itn. Sprejemamo tudi podatke, pripravljene za te programske jezike.</p>
+      </div>
+      <div id="standardText">
+        <h4>Standardni formati, ki temeljijo na besedilu</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Repozitorij sprejema tudi formate, ki temeljijo na besedilu in ki jih podpirajo različni organi za standarde, tako da je dokumentacija zanje prosto dostopna na spletu. Najboljši primeri takšnih formatov so JSON (.json) in RDF/Turtle (.ttl) ter XML, ki ga podrobneje obravnavamo v nadaljevanju.</p>
+      </div>
+      <div id="plainText">
+        <h4>Datoteke z golim besedilom</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;"><b>Nestrukturirane datoteke</b> naj bodo v formatu datoteke z golim besedilom (.txt).  Trivialno formatiranje, kot je označevanje novega odstavka s prelomom vrstice ali zapisovanje komentarjev avtorja transkripcije v oglate oklepaje, je dovoljeno, če je uporabljena praksa opisana v datoteki README.</p>
+      </div>
+      <div id="tabular">
+        <h4>Tabelarični podatki</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;"><b>Podatke v preglednici ali zbirki podatkov</b> in podobnih oblikah sprejemamo v najpogostejših formatih, kot so datoteke z vrednostmi, ločenimi s tabulatorji (.txt/.tsv/.tab), in datoteke z vrednostmi, ločenimi z vejico (.txt/.csv). Tabelarični podatki morajo vsebovati vrstico z glavo, priložiti pa jim je treba tudi datoteko README, v kateri je razloženo, kaj pomenijo posamezni stolpci.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;"><b>Označene korpuse</b> lahko deponirate v formatu <a href="https://universaldependencies.org/format.html">CoNLL-U</a> (.conll ali .conllu), ki se uporablja pri projektu <a href="https://universaldependencies.org/">Univerzalne odvisnostne drevesnice</a>. Poleg tega sprejemamo tudi tako imenovane <b>vertikalne datoteke</b> (.vert/.vrt), ki vsebujejo tabelarične podatke in oznake, podobne zapisu XML, in ki se jih uporablja za konkordančnike, ki temeljijo na standardnem jeziku CQP, kot so Corpus Query Workbench, (no)Sketch Engine in KonText. Vertikalnim datotekam naj bo priložena njihova registrska datoteka. Številni korpusi v repozitoriju CLARIN.SI so na voljo v zapisu TEI in kot vertikalne datoteke ter povezani s konkordančnikoma <a href="https://clarin.si/noske/index.html">(no)Sketch Engine</a> in <a href="https://www.clarin.si/kontext/">KonText</a>, ki sta del infrastrukture CLARIN.SI.</p>
+      </div>
+      <div id="html">
+        <h4>Dokumenti HTML</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Format HTML (.html/.htm) ni sprejemljiv, če gre za glavne podatke, dovoljen pa je za spremno dokumentacijo, ki na primer predstavlja strukturiranost podatkov ali njihovo jezikoslovno označenost. V tem primeru morajo dokumenti ustrezati eni od različic HTML (najbolje različici XHTML) in morajo biti samozadostni, kar pomeni, da je zaželeno, da so prekrivni slogi (CSS), če se jih uporablja, vdelani v datoteko/datoteke HTML ali pa morajo biti vsaj shranjeni skupaj z njimi.</p>
+      </div>
+      <div id="xml">
+        <h4>Dokumenti XML</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Daleč najpogostejši format vnosov je XML (.xml), ki omogoča kompleksno in hierarhično strukturiranost besedilnih podatkov. Repozitorij CLARIN.SI sprejema vse ustrezne dokumente XML, ki izpolnjujejo naslednje pogoje:
+		<ul>
+            <li>shema, s katero se potrdi ustreznost dokumenta, je splošno znana in skupaj z dokumentacijo javno dostopna na stabilnem mestu, na primer RDF/XML (.rdf) ali ELAN (.eaf); </li>
+            <li>shema je skupaj z dokumentacijo priložena vnosu v repozitorij. </li>
+          </ul>
+        </p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Sprejemamo sheme v jezikih za definiranje sheme DTD (.dtd), RelaxNG (.rng/.rnc) in W3C XML Shema (.xsd), pa tudi v jeziku Schematron (.xml).</p>
+      </div>
+      <div id="tei">
+        <h4>Dokumenti TEI</h4>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Najbolj zaželen zapis XML-vnosov v repozitoriju CLARIN.SI je zapis TEI (.tei/.xml). Gre za zapis, ki sledi <a
+            href="https://tei-c.org/guidelines/P5/">Smernicam konzorcija Text Encoding Initiative</a>, namenjenim zapisovanju strukturiranih jezikovnih virov, kot so jezikovni korpusi, strojno berljivi slovarji, znanstvenokritične izdaje itn.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Če je mogoče, naj bo deponirana vrsta jezikovnega vira zapisana s standardno ali uveljavljeno prilagoditvijo sheme TEI, kot so <a href="https://www.iso.org/standard/37338.html">ISO 24624:2016</a> za transkripcijo govora, <a
+            href="https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html">TEI Lex-0</a> za slovarje ali <a href="https://clarin-eric.github.io/parla-clarin/"
+            >Parla-CLARIN</a> za zapisovanje korpusov parlamentarnih razprav, namesto s splošno shemo ali s shemo, specifično za jezikovni vir.</p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">Če so deponirani dokumenti zapisani v samo standardnih modulih zapisa TEI in še posebej če se da potrditi ustreznost zapisa po <a href="https://github.com/clarinsi/TEI-schema">shemi TEI za CLARIN.SI</a>, datotekam v formatu XML TEI ni treba priložiti dodatnih datotek. Datotekam, katerih zapis vključuje razširitve zapisa TEI, pa je treba priložiti TEI ODD in generirane sheme XML (predvsem RelaxNG .rng in .rnc) ter dokumentacijo vsaj v zapisu HTML.</p>
+      </div>
+	<div id="linguistic">
+        <h4>Nabori oznak za jezikoslovno označevanje</h4>
+	<p style="margin-top: 10px; margin-bottom: 10px;">Večina jezikovnih korpusov je označenih z jezikoslovnimi kategorijami na različnih ravneh. Te kategorije morajo biti dokumentirane, bodisi na stabilnih zunanjih URL-jih ali tako, da so podatki vključeni v vnos, bodisi v spremnih datotekah ali neposredno v korpusih, kar še posebej velja za korpuse v zapisu TEI.</p>
+	<p style="margin-top: 10px; margin-bottom: 10px;">Pogoste specifikacije za označevanje na repozitoriju CLARIN.SI so:
+	  <ul>
+	    <li><a href="https://universaldependencies.org/">Univerzalne odvisnostne drevesnice</a>: <a href="https://universaldependencies.org/u/overview/morphology.html">morfološke lastnosti</a>
+	    in <a href="https://universaldependencies.org/guidelines.html">skladenjska razmerja</a></li>
+	    <li><a href="http://nl.ijs.si/ME/">MULTEXT-East</a>
+	    (na <a href="https://github.com/clarinsi/mte-msd">GitHubu</a>): <a href="http://nl.ijs.si/ME/V6/msd/html/index.html">oblikoskladenjske specifikacije</a>, ki so na voljo tudi v več <a href="http://nl.ijs.si/ME/V6/msd/tables/">strojno berljivih formatih</a>. Specifikacije »msd-fslib2-« na povezavi <a href="http://nl.ijs.si/ME/V6/msd/tables/">http://nl.ijs.si/ME/V6/msd/tables/</a> lahko vključite v XML.</li>
+	    <li><a href="http://nl.ijs.si/janes/wp-content/uploads/2017/09/SlovenianNER-eng-v1.1.pdf">Smernice za imenske entitete JANES</a></li>
+	  </ul>
+	</p>
+      </div>
+    </div>
+    <div id="references">
+      <h3>Viri</h3>
+      <ul>
+	<li><a href="https://www.clarin.eu/content/standards">CLARIN ERIC: Standards</a></li>
+	<li><a href="https://www.clarin.eu/content/standards-and-formats">CLARIN ERIC: Standards and Formats</a></li>
+	<li><a href="https://www.mpi.nl/corpus/html/lamus2/apa.html">MPI: Appendix A. Accepted file types and formats</a></li>
+	<li><a href="http://fedora.clarin-d.uni-saarland.de/ressources/AcceptedFormats.en.pdf">CLARIN-D: List of accepted formats</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
