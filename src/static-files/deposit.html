@@ -1,150 +1,364 @@
 <div style="width: 100%">
-	<style scoped="scoped">
-		.print_screen_figure{
-			text-align: center;
-			padding-bottom: 15px;
-			padding-top: 15px;
-		}
-		.print_screen_figure figcaption{
-			padding-top: 5px;
-		}
+  <style scoped="scoped">
+    .print_screen_figure{
+	text-align: center;
+	padding-bottom: 15px;
+	padding-top: 15px;
+    }
+    .print_screen_figure figcaption{
+	padding-top: 5px;
+    }
+    
+    .print_screen_img{
+	box-shadow: 3px 3px 1px #ccc;
+	-webkit-box-shadow: 3px 3px 1px #ccc;
+	-moz-box-shadow: 3px 3px 1px #ccc;
+    }
+  </style>
 
-		.print_screen_img{
-			  box-shadow: 3px 3px 1px #ccc;
-			  -webkit-box-shadow: 3px 3px 1px #ccc;
-			  -moz-box-shadow: 3px 3px 1px #ccc;
-		}
-	</style>
+  <h2>How to Deposit</h2>
+  <div class="alert">
+    Only authenticated users can deposit items. If you cannot find your home organisation in the
+    Login dialog list of organisations then register
+    at <a href="https://user.clarin.eu/user/register">clarin.eu</a> and, once you are registered
+    there, authenticate using "clarin.eu website account". In case you encounter a problem, do not
+    hesitate to contact our <a class="helpdesk-tolink" href="#">Help Desk</a>.
+  </div>
+  
+  <div>
+    The guide below describes new submissions, if what you plan to submit is a new version of a
+    resource already available in the repository see the
+    <a href="https://github.com/ufal/clarin-dspace/wiki/New-Version-Guide">new version guide</a>.
+  </div>
+  
+  <div id="step1" style="margin-bottom: 20px;">
+    <h3>Step 1: Login</h3>
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      To start a new submission you have to login first. Click Login under My Account in the right
+      menu panel.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step1.png" class="print_screen_img" alt="{{'static.deposit.image.step-1' | translate}}" />
+      <figcaption>Figure 1. Menu Login</figcaption>
+    </figure>
+  </div>
 
-        <h2>How to Deposit</h2>
-        <div class="alert">Only authenticated users can deposit items. If you cannot find your home organisation in the
-                Login dialog list of organisations then register at <a href="https://user.clarin.eu/user/register">clarin.eu</a>
-                and authenticate using "clarin.eu website account". In case you cannot use any authentication method above or
-                if you encounter a problem, do not hesitate to
-                contact our <a class="helpdesk-tolink" href="#">Help Desk</a> and we can create a local account for you.
-        </div>
-        <div>
-            The guide below describes new submissions, if what you plan to submit is a new version of a resource
-            already available in the repository see the
-            <a href="https://github.com/ufal/clarin-dspace/wiki/New-Version-Guide">new version guide</a>.
-        </div>
-    <div id="step1" style="margin-bottom: 20px;">
-                <h3>Step 1: Login</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">To start a new submission you have to login first. Click Login under My Account in the right menu panel.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step1.png" class="print_screen_img" alt="{{'static.deposit.image.step-1' | translate}}" />
-			<figcaption>Fig1. Menu Login</figcaption>
-		</figure>
-        </div>
+  <div id="step2" style="margin-bottom: 0;">
+    <h3>Step 2: Starting a new submission</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Now you have a new menu item 'Submissions' under My Account. Click on Submissions to go to the Submissions screen.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step2.png" class="print_screen_img" alt="{{'static.deposit.image.step-2' | translate}}"/>
+      <figcaption>Figure 2. Menu Submissions</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Now you should be on the main Submission and Workflow tasks page where you can view your
+      incomplete/archive submissions. Click on the 'Start another submission' link to start a new
+      Submission.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step2_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-2-1' | translate}}"/>
+      <figcaption>Figure 3. Starting a submission</figcaption>
+    </figure>
 
-        <div id="step2" style="margin-bottom: 0;">
-                <h3>Step 2: Starting a new submission</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Now you have a new menu item 'Submissions' under My Account. Click on Submissions to go to the Submissions screen.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step2.png" class="print_screen_img" alt="{{'static.deposit.image.step-2' | translate}}"/>
-			<figcaption>Fig2. Menu Submissions</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Now you should be on the main Submission and Workflow tasks page where you can view your incomplete/archive submissions. Click on the 'Start another submission' link to start a new Submission.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step2_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-2-1' | translate}}"/>
-			<figcaption>Fig3. Starting a submission</figcaption>
-		</figure>
-        </div>
+    <!--div class="alert">The CLARIN.SI repository is set-up so that a handle (which is a
+      permanent identifier or PID) is assigned to a submission as soon as you create
+      it. This is useful as you can refer to the PID in the data that will be uploaded
+      in one of the next steps. This enables esp. CC licensed data to refer to the
+      repository submission, so that users receiving the data indirectly can still
+      find the repository entry.</div-->
 
-        <div id="step3" style="margin-bottom: 20px;">
-                <h3>Step 3: Select type of your submission</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">You have initiated a new workflow item. In the next few steps you will provide the details about the item and upload content files. First select the type of the resource you are about to submit.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step3.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-3' | translate}}"/>
-			<figcaption>Fig4. Submission info</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Click on one of the type buttons e.g. Corpus. Proceed with filling the basic information such as the title. Click Next to continue the following step.</p>
-        </div>
+  </div>
 
-        <div id="step4" style="margin-bottom: 20px;">
-                <h3>Step 4: Describe your item</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">In the following two steps you will provide more details for your item. First describe the people, organization and projects involved with the item.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step4.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4' | translate}}"/>
-			<figcaption>Fig5. Describing item - people and organizations</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Next add your description, fill the language, etc.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step4_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4-1' | translate}}" />
-			<figcaption>Fig6. Describing item - resource details</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Once you filled the necessary information, click Next to upload the content files.</p>
-        </div>
+  <div id="step3" style="margin-bottom: 20px;">
+    <h3>Step 3: Select type of your submission</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      You have initiated a new workflow item. In the next few steps you will provide the details
+      about the item and upload content files. First select the type of the resource you are about
+      to submit.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step3.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-3' | translate}}"/>
+      <figcaption>Figure 4. Submission info</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Click on one of the type buttons e.g. Corpus. Proceed with filling the basic information such
+      as the title.</p>
 
-        <div id="step5" style="margin-bottom: 20px;">
-                <h3>Step 5: Upload files</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">In this step you will upload the content files of your submission. If there are no files, you can skip this step by clicking
-                        Next. The files can be added by clicking the browse button or you can drag and drop files in the gray area with text 'Drag and Drop file(s) here'.</p>
-                <figure class="print_screen_figure">
-			<img src="assets/images/static-pages/step5.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-5' | translate}}" />
-			<figcaption>Fig7. Uploading file</figcaption>
-		</figure>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Selecting files will open a dialog box, where you can enter the description of each file. To begin the file upload
-click 'Start Upload'.</p>
-                <p style="margin-top: 10px; margin-bottom: 10px;">Once the file(s) upload is done, press OK to close the dialog box. You can add more files or delete/modify the already uploaded ones,
-                        after you finish press Next to continue with the License selection.</p>
-        </div>
+    <!--div class="alert">
+      <p style="margin-top: 10px; margin-bottom: 10px;" >The title should give a
+        very short description of the resource, followed by its proper name, which
+        is usually an acronym. If there is a chance that further versions of the
+        resources will be submitted, the major and minor version should come at the
+        end; as the entry is a new resource, this will typically be "1.0". Except
+        for the first word, the acronym, and the names of languages or other proper
+        nouns, the words in the title should not be capitalised. Some examples from
+        the CLARIN.SI repository:</p>
+      <ul>
+        <li>Automatically sentiment annotated Slovenian news corpus AutoSentiNews
+          1.0</li>
+        <li>Concreteness and imageability lexicon MEGA.HR-Crossling</li>
+        <li>Dictionary of Slovenian Particles</li>
+      </ul>
+    </div-->
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Click Next to continue the following step.
+    </p>
+  </div>
 
-        <div id="step6" style="margin-bottom: 20px;">
-                <h3>Step 6: Select Licenses</h3>
-                <p style="margin-top: 10px; margin-bottom: 10px;">If you uploaded at least one file, you must select
-                        a license under which you want your resources to be distributed in this step (data without
-                        license is unusable because a user does not know how can he/she use it!).
-                        Please read the <a href="./contract">Distribution agreement carefully</a>
-                        and click the red box to indicate your agreement (it will turn green).
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-1' | translate}}" />
-				<figcaption>Fig8. Distribution license agreement</figcaption>
-			</figure>
-                Select the appropriate license from the dropdown list, if you already have decided on the license;
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_2.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-2' | translate}}" />
-				<figcaption>Fig9. Selecting license</figcaption>
-			</figure>
-                or use the OPEN License Selector, which will help you choose by asking few questions about the submission and your requirements
-                        <figure class="print_screen_figure">
-				<img src="assets/images/static-pages/step6_3.png" id="license_selector" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-3' | translate}}" />
-				<figcaption>Fig10. OPEN License Selector</figcaption>
-			</figure>
-                        If none of the licenses suits your needs contact our
-                        <a class="helpdesk-tolink" href="#">Help Desk</a>.</p>
+  <div id="step4" style="margin-bottom: 20px;">
+    <h3>Step 4: Describe your item</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      In the following two steps you will provide more details for your item. First describe the
+      people, organization and projects involved with the item.</p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step4.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4' | translate}}"/>
+      <figcaption>Figure 5. Describing an item - people and organizations</figcaption>
+    </figure>
 
-                <div class="alert alert-warning">
-                        <h3>For datasets that require license signing</h3>
+    <!--div class="alert">
+        <ul>
+          <li>The "Project URL" gives the URL of the project in the scope of which the
+            resource was produced</li>
+          <li>The "Demo URL" gives the URL of the web application where the resource
+            is available for browsing, reading or analysis. For example, a deposited
+            corpus might be also available in a digital library, a machine-readable
+            dictionary on a dictionary portal, and a computer program as an API.</li>
+          <li>The "Referenced by" gives the URLs of any publications that reference
+            the dataset. If a publication has a DOI URL, this is the one that should
+            be used</li>
+        </ul>
+    </div-->
 
-                        While we prefer open data and open source software, we understand it is not always possible.
-                        We can ensure that users must authenticate and sign a license in order to download your data
-                        (see <a href="./item-lifecycle#restricted-submissions">Restricted Submissions</a>).
-                        If you need more information about the users than the fact that they authenticated via a
-                        university (or similar), we can ask for some specific attributes similar to standard
-                        web forms. This makes sense mostly for data with "no redistribution" clause in their license.
-                </div>
+      <!--div class="alert">The date issued will typically give the date when you
+        submit the repository entry. The date should be exact, e.g., 2020-11-01.
+	When the resource had already been published before elsewhere,
+        the date of the original publication of the resource should be given.
+     </div-->
 
-                <p style="margin-top: 10px; margin-bottom: 10px;">Click Next to continue.</p>
-        </div>
+      <!--div class="alert">Use the correct spelling of the names, e.g. do not substitute
+          letters with diacritics with ASCII ones. So, "Tomaž" is correct, "Tomaz" is
+          not.</div-->
 
-        <div id="step7" style="margin-bottom: 20px;">
-                <h3>Step 7: Leave a note</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">You can leave a note for the reviewer in this step.</p>
-        </div>
+       <!--div class="alert">The name of the publisher should be in English, using at most
+         a two-level naming scheme, e.g.: <ul>
+           <li>Faculty of Electrical Engineering and Computer Science, University of
+             Maribor</li>
+           <li>Faculty of Arts, University of Ljubljana</li>
+           <li>Institute of Contemporary History</li>
+         </ul>
+       </div-->
 
-        <div id="step8" style="margin-bottom: 20px;">
-                <h3>Step 8: Review your submission</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">In this step you will review your submission before submitting it. Review page contains a sub-review panel for each of the
-                step you have filled in before. If you want to change any field in a particular step just click Correct one of these and it will
-                take you directly to the particular step page. Once you verify all the detail, submission can be made by clicking Complete Submission
-                or you can click Save &amp; Exit to save the submission for continue working on it later.</p>
-        </div>
+       <!--div class="alert">If you will enter "EU funding", extra care should be taken
+          with the project code, as your entry will then be automatically connected
+          to <a href="https://explore.openaire.eu/search/dataprovider?datasourceId=re3data_____::fe0d76581a60e1287a93e2ed2cb29339">OpenAIRE</a>.        <p style="margin-top: 10px; margin-bottom: 10px;">Here are some examples from
+          existing entries: </p>
+        <ul>
+          <li>EC 610704 "SIMPOL"</li>
+          <li>Ministry of Culture C3340-20-278001 "Development of Slovene in a Digital
+            Environment"</li>
+          <li>ARRS (Slovenian Research Agency) P2-103 "Knowledge Technologies"</li>
+        </ul>
+        </p>
+       </div-->
 
-        <div id="step9" style="margin-bottom: 20px;">
-                <h3>Step 9: Submit</h3>
-		<p style="margin-top: 10px; margin-bottom: 10px;">Once you click the Complete Submission in the review step, item will be submitted for the reviewing by the editors. Once
-                the editors approve the item it will appear in the repository. In case of any query regarding the submission, editors will contact
-                you for the further detail.</p>
-        </div>
+<p style="margin-top: 10px; margin-bottom: 10px;">
+      Next add your description, fill the language, etc.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step4_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-4-1' | translate}}" />
+      <figcaption>Figure 6. Describing an item: resource details</figcaption>
+    </figure>
+    
+    <!--div class="alert">
+          <p style="margin-top: 10px; margin-bottom: 10px;" >The resource description
+            should be about half a page in length, and should describe the resource in
+            terms of what it contains, approximate size, and basic structure of the
+            data. Where relevant, it should give the envisioned use of the resource.
+            For corpora, the description should also give their temporal coverage,
+            e.g. "The corpus contains newspaper articles from 2001 to 2019". If there
+            are bibliographic items that you would wish to mention, this is also the
+            place to cite them. It is also possible to give URLs to pages that describe
+            various aspects of the resource, e.g. the tagset used, or to which other
+            resource the one being submitted is related to etc.
+	    Note that if a resource is a new version of an already existing resource,
+            the description should give, in the last paragraph, a brief overview
+	    of the difference between the two versions.
+	  </p>
+	    
+	  <p style="margin-top: 10px; margin-bottom: 10px;" >Click on the handles below
+	    to see some examples of resource descriptions:</p>
+          <ul>
+            <li><a href="http://hdl.handle.net/11356/1167">Slovenian parliamentary
+                corpus SlovParl 2.0.</a></li>
+            <li><a href="http://hdl.handle.net/11356/1222">Spoken corpus Gos
+                VideoLectures 4.0 (audio).</a></li>
+            <li><a href="http://hdl.handle.net/11356/1230">Morphological lexicon
+                Sloleks 2.0.</a></li>
+            <li><a href="http://hdl.handle.net/11356/1136">Dictionary of the Slovenian
+                Normative Guide (2001).</a></li>
+            <li><a href="http://hdl.handle.net/11356/1373">The CLASSLA-StanfordNLP model
+                for morphosyntactic annotation of standard Macedonian 1.0.</a></li>
+            <li><a href="http://hdl.handle.net/11356/1284">Dependency tree extraction
+                tool STARK 1.0</a></li>
+          </ul>
+        </div-->
+
+    <!--div class="alert">Even if the language of the resource is a dialect, choose
+        the official language that it is a dialect of (but the fact that it is a
+        dialect should be, of course, mentioned in its title and description). For
+        multilingual resources, several languages can be chosen. If the resource is a
+        program ("toolResource") which is language independent, the language field
+        should be left blank.</div-->
+
+    <!--div class="alert"> If at all possible, choose existing keywords that appear
+          in the drop-down list after you start typing. Note that the keywords
+          should, except for proper nouns, all be lower case. You should not enter
+          the language(s) of the resource in this field, as they are already covered
+          by the dedicated "language" field.</div>
+      </div-->
+
+          <!-- SIZE: -->
+      <!--div class="alert"> The numbers should be exact, and follow from trivial
+          counting of characters, lines, XML elements etc. In this way, they can also
+          serve as a simple checksum for the resource.</div>
+      </div-->
+
+<p style="margin-top: 10px; margin-bottom: 10px;">
+      Once you filled the necessary information, click Next to upload the content files.
+    </p>
+  </div>
+
+  <div id="step5" style="margin-bottom: 20px;">
+    <h3>Step 5: Upload files</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      In this step you will upload the content files of your submission.
+      The files can be added by clicking the browse button or
+      you can drag and drop files in the gray area with text 'Drag and Drop file(s) here'.
+    </p>
+
+    <!--div class="alert"> CLARIN.SI does not accept metadata-only submissions,
+        i.e. submission without files. The submitted files should follow the
+	<a href="data">CLARIN.SI guidelines for data submissions</a>.</div-->
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step5.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-5' | translate}}" />
+      <figcaption>Figure 7. Uploading file</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Selecting files will open a dialog box, where you can enter the description of each file. To
+      begin the file upload click 'Start Upload'.
+    </p>
+    
+    <!--p style="margin-top: 10px; margin-bottom: 10px;">Uploading files
+        larger than 2 GB requires special handling. Please contact
+        <a class="helpdesk-tolink" href="#">Help Desk</a>
+        about how to upload such files.</p-->
+
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Once the file(s) upload is done, press OK to close the dialog box. You can add more files or
+      delete/modify the already uploaded ones, after you finish press Next to continue with the
+      License selection.
+    </p>
+  </div>
+
+  <div id="step6" style="margin-bottom: 20px;">
+    <h3>Step 6: Select a License</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      If you uploaded at least one file, you must select a license under which you want your
+      resources to be distributed in this step (data without license is unusable because a user does
+      not know how can he/she use it!).  Please read the <a href="./contract">Distribution agreement
+      carefully</a> and click the red box to indicate your agreement (the box will then turn green).
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step6_1.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-1' | translate}}" />
+      <figcaption>Figure 8. Distribution license agreement</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Select the appropriate license from the dropdown list, if you already have decided on the
+      license.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step6_2.png" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-2' | translate}}" />
+      <figcaption>Figure 9. Selecting license</figcaption>
+    </figure>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      If you don't know which licence to choose, use the OPEN License Selector, which will help you
+      choose by asking few questions about the submission and your requirements.
+    </p>
+    
+    <figure class="print_screen_figure">
+      <img src="assets/images/static-pages/step6_3.png" id="license_selector" class="print_screen_img" width="600px" alt="{{'static.deposit.image.step-6-3' | translate}}" />
+      <figcaption>Figure 10. OPEN License Selector</figcaption>
+    </figure>
+
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      If none of the licenses suits your needs contact our
+      <a class="helpdesk-tolink" href="#">Help Desk</a>.
+    </p>
+
+    <div class="alert alert-warning">
+      <h3>For datasets that require license signing</h3>
+
+      While we prefer open data and open source software, we understand it is not always possible.
+      We can ensure that users must authenticate and sign a license in order to download your data
+      (see <a href="./item-lifecycle#restricted-submissions">Restricted Submissions</a>).
+      If you need more information about the users than the fact that they authenticated via a
+      university (or similar), we can ask for some specific attributes similar to standard
+      web forms. This makes sense mostly for data with "no redistribution" clause in their license.
+    </div>
+
+    <p style="margin-top: 10px; margin-bottom: 10px;">Click Next to continue.</p>
+  </div>
+
+  <div id="step7" style="margin-bottom: 20px;">
+    <h3>Step 7: Leave a note</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">You can leave a note for the reviewer in this
+    step.</p>
+  </div>
+
+  <div id="step8" style="margin-bottom: 20px;">
+    <h3>Step 8: Review your submission</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      In this step you will review your submission before submitting it. Review page contains a
+      sub-review panel for each of the step you have filled in before. If you want to change any
+      field in a particular step just click Correct one of these and it will take you directly to
+      the particular step page. Once you verify all the detail, submission can be made by clicking
+      Complete Submission or you can click Save &amp; Exit to save the submission for continue
+      working on it later.
+    </p>
+  </div>
+
+  <div id="step9" style="margin-bottom: 20px;">
+    <h3>Step 9: Submit</h3>
+    
+    <p style="margin-top: 10px; margin-bottom: 10px;">
+      Once you click the Complete Submission in the review step, item will be submitted for the
+      reviewing by the editors. Once the editors approve the item it will appear in the
+      repository. In case of any query regarding the submission, editors will contact you for the
+      further detail.
+    </p>
+  </div>
 </div>
