@@ -2,7 +2,7 @@
 
 This directory contains static HTML pages that document the repository, its policies and licences.
 This version is adapted for the CLARIN.SI repository.
-It contains the HTML files in English, while translations into Slovenian are in the sl/ directory.
+It contains the HTML files in English, while translations into Slovenian are in the [sl/](sl/) directory.
 
 ## Current status
 
@@ -14,37 +14,49 @@ The workflow consisted of manually comparing the new LINDAT V7 pages with the CL
 and modifying the V7 pages to include the CLARIN.SI specific information. The files have been
 checked with xmllint for well-formedness, however, links have not been checked.
 
+## Content
+
 The static HTML files in this directory are:
 
-- `error.html`: Generic error message (unchanged from V5).
-- `terms-of-service.html`: Terms of service (unchanged from V5).
-- `cookies.html`: Information about cookies (unchanged from V5).  Note that it makes reference to
+- [error.html](error.html):
+  Generic error message (unchanged from V5).
+- [terms-of-service.html](terms-of-service.html):
+  Terms of service (unchanged from V5).
+- [cookies.html](cookies.html):
+  Information about cookies (unchanged from V5).  Note that it makes reference to
   Google analytics which, @TomazErjavec thought are are not used at CLARIN.SI - however, it seems we
   do call `https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js` although this is not
   enough to actually track via Google. On the other hand, LINDAT does track via Google, see the
   footer of any of their pages,
   e.g. [https://lindat.mff.cuni.cz/repository/static/terms-of-service](https://lindat.mff.cuni.cz/repository/static/terms-of-service).
-- `about.html`: General information about the repository.
-- `cite.html`: Citation guidelines.
-- `deposit.html`: Explanation of the deposition workflow.  CLARIN.SI V5 pages have extensive
+- [about.html](about.html):
+  General information about the repository.
+- [cite.html](cite.html):
+  Citation guidelines.
+- [deposit.html](deposit.html):
+  Explanation of the deposition workflow.  CLARIN.SI V5 pages have extensive
    guidelines for metadata content in [deposit.html](deposit.html); they are encoded in
    `div[@class="alert"]` elements. As the V7 English deposit page has much simpler structure than in
    V5, it is currently not clear where to insert these gulidelines, so they have been left in the V7
-   page as comments. They need to be de-commented and moved to the appropriate place once a live
+   English page as comments. They need to be de-commented and moved to the appropriate place once a live
    installation is available for testing.
-- `faq.html`: Frequenty Asked Questions. Note that there is some confusion on the status of the
-  GitHub V7 FAQ, as it is very different from the one used by
+- [faq.html](faq.html):
+  Frequenty Asked Questions. Note that there is some confusion on the status of the
+  GitHub V7 FAQ, as it is very different from the live one on 
   [LINDAT](https://lindat.cz/faq-repository): the GitHub one has pointers to citation and deposit
-  guidelines, while the live one has this information included.
-- `item-lifecycle.html`: Explains the different states of a repository item.
-- `metadata.html`: Information about metadata requirements, dissemination and mapping.
-- `data.html`: Information about data formar requirements (CLARIN.SI only, not part of LINDAT DSpace).
-- `license-templateXXXX-versionXX.html`: Template for forming new licence texts.
-- `licence-aca-id-by-inf-nored-1.0.html`: CLARIN.SI licence texts (CLARIN.SI only, not part of LINDAT DSpace).
-- `licence-aca-id-by-nc-inf-nored-1.0.html`: CLARIN.SI licence texts (CLARIN.SI only, not part of LINDAT DSpace).
-
-For the status of static HTML pages in Slovenian, see the [README](README.md) in the [sl/](sl/)
-directory.
+  guidelines, while the live one has this information included directly, and the filenames also differ.
+- [item-lifecycle.html](item-lifecycle.html):
+  Explains the different states of a repository item.
+- [metadata.html](metadata.html):
+  Information about metadata requirements, dissemination and mapping.
+- [data.html](data.html):
+  Information about data formar requirements (CLARIN.SI only, not part of LINDAT DSpace - unchanged from V5).
+- [license-templateXXXX-versionXX.html](license-templateXXXX-versionXX.html):
+  Template for forming new licence texts.
+- [licence-aca-id-by-inf-nored-1.0.html](licence-aca-id-by-inf-nored-1.0.html):
+  CLARIN.SI licence texts (CLARIN.SI only, not part of LINDAT DSpace).
+- [licence-aca-id-by-nc-inf-nored-1.0.html](licence-aca-id-by-nc-inf-nored-1.0.html):
+  CLARIN.SI licence texts (CLARIN.SI only, not part of LINDAT DSpace).
 
 ## References
 
