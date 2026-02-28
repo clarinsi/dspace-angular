@@ -1,0 +1,129 @@
+﻿<div id="faq-like">
+
+     <h2>Življenjski ciklus vnosa</h2>
+
+     <hr />
+     <ul id="faqs-list">
+         <li><a href="#submitted-item">Oddani vnos</a></li>
+         <li><a href="#edited-item">Urejeni vnos</a></li>
+         <li><a href="#published-item">Objavljeni vnos</a></li>
+         <li><a href="#deleting-item">Brisanje objavljenega vnosa</a></li>
+         <li><a href="#modifying-item">Spreminjanje objavljenega vnosa</a></li>
+         <li><a href="#newversion-item">Ustvarjanje nove različice vnosa</a></li>
+         <li><a href="#restricted-submissions">Omejeni vnosi</a></li>
+     </ul>
+     <hr />
+
+    <div>
+      <h3 id="submitted-item">Oddani vnos</h3>
+      <p>Ko boste <a href="deposit#screen7">potrdili oddajo</a> vnosa, bo ta vnesen na seznam
+      oddanih vnosov. Oddani vnos ni javno dostopen, dokler ga urednik ne potrdi (lahko
+      ga tudi zavrne).</p>
+    </div>
+
+    <div>
+      <h3 id="edited-item">Urejeni vnos</h3>
+      <p>Naloga urednika je, da preveri, ali vnos ustreza vsem našim zahtevam glede
+      kvalitete in popolnosti metapodatkov, doslednosti bitnih tokov in trajnih
+      identifikatorjev. Urednik lahko avtorju vrne vnos z opisom potrebnih sprememb. To
+      korak se lahko ponavlja, dokler urednik ne potrdi vnosa. Potrjeni vnos nato
+      postane objavljeni vnos.</p>
+    </div>
+
+    <div>
+      <h3 id="published-item">Objavljeni vnos</h3>
+      <p>Vsak vnos ima trajni identifikator (persistent identifier, PID), ki se, enkrat
+      ko je vnos objavljen, uporablja pri citiranju vnosa, na
+      primer <strong>http://hdl.handle.net/11356/1041</strong>. Repozitorij CLARIN.SI
+      zagotavlja, da se bo s klikom na trajni identifikator (natančneje: uporabljamo
+      http handle posredniški strežnik za PID) odprla delujoča spletna stran z vašim
+      virom (tudi če je bila strežniška infrastruktura spremenjena ali prestavljena na
+      novo domeno.</p>
+      
+      <p>Objavljeni vnosi so dostopni prek brskalnika našega iskalnega
+      vmesnika. Metapodatki vseh vnosov so posredovani iskalnikom in so dostopni prek
+      protokola za zbiranje
+      metapodatkov <a href="http://www.clarin.si/repository/oai/openaire_data?verb=Identify">OAI-PMH</a>
+      (več institutov žanje metapodatke vnosov iz našega repozitorija, npr.
+      <a href="http://catalog.clarin.eu/vlo/">CLARIN VLO</a>). Bitni tokovi javnih
+      vnosov (glejte <a href="#restricted-submissions">Omejeni vnosi</a>) so ravno tako
+      dostopni prek protokola OAI-ORE.</p>
+    </div>
+
+    <div>
+      <h3 id="deleting-item">Brisanje objavljenega vnosa</h3>
+      <p>Vsak lahko zaprosi za izbris objavljenih podatkov prek
+	naše <a class="helpdesk-tolink" href="#">Pomoči uporabnikom</a>.  Takšne
+	prošnje se za vsak primer obravnavajo posebej.</p>
+
+      <p>Pridržujemo si pravico do ohranjanja dostopnosti metapodatkov objavljenih
+	vnosov, če za njihov izbris ni zelo dobrega razloga. Dostopnost do
+	metapodatkov ohranjamo zato, ker je njihovo brisanje v nasprotju s konceptom
+	PID, torej <strong>trajnih</strong> identifikatorjev. Vsi trajni
+	identifikatorji so dostopni prek vmesnika protokola
+	<a href="http://www.clarin.si/repository/oai/openaire_data?verb=Identify">OAI-PMH</a>,
+      četudi so uporabljeni le kot obvestilo o izbrisu vnosa.</p>
+    </div>
+
+    <div>
+      <h3 id="modifying-item">Spreminjanje objavljenega vnosa</h3>
+      <p>Za manjše popravke (na primer tipkarske napake) se obrnite na
+	našo <a class="helpdesk-tolink" href="#">Pomoč uporabnikom</a>.  Dovoljujemo
+	tudi določene dodatke k metapodatkom oz. podatkom, npr. dodajanje ključnih
+	besed, informacije o novi publikaciji o vnosu, ali dodajanje novih
+	podatkovnih tokov k vnosu, pri čemer so ti podatki izvedeni iz že obstoječih,
+	da se torej identični podatki ponudijo v dodatnih formatih.
+        Tudi pri takih popravkih se obravnava vsak primer posebej.
+	Kadar pa so spremembe večje, mora uporabnik vnesti novo različico vnosa, in
+	metapodatki bodo pokazali, da je bil vnos nadomeščen z novejšo različico.</p>
+
+      <p>Opozarjamo še, da lahko uredniki tudi naredijo manjše spremembe metapodatkov
+	v že objavljenih vnosih v dobro definiranih okoliščinah, in sicer popravljanje tipkarskih napak, 
+	brisanje URLjev, ki ne delujejo več, in poenotenje ključnih besed.</p>
+
+    </div>
+
+    <div>
+      <h3 id="newversion-item">Ustvarjanje nove različice vnosa</h3>
+      <p>Če ste ustvarili novo različico vira, je za to različico potrebno ustvariti
+	nov vnos, vendar tega vnosa ne ustvarjate od začetka, temveč sledite naslednjemu
+	postopku:</p>
+    <ol>
+      <li>Prijavite se in odprite seznam svojih obstoječih vnosov. Novo različico lahko ustvarite le iz
+      vnosa, ki ste ga oddali vi, in ne iz vnosa drugih uporabnikov. V primeru, da je vnos, iz katerega
+      želite ustvariti novo različico, oddala druga oseba, jo je potrebno prositi, da izvede korake 1-3
+      v tem seznamu in nato vnos "Shrani in deli" z vami. Nato boste deljeni vnos lahko prevzeli in
+      dokončali sami.</li>
+      <li>Pomaknite se navzdol do naslova "Arhivirani vnosi", odkljukajte želeni vnos, iz katerega
+      želite ustvariti novo različico, in izberite "Dodaj novo različico".</li>
+      <li>To ustvari kopijo vnosa tako, kot če bi ustvarili popolnoma nov vnos. Ima pa ta vnos kopirane
+      vse metapodatke iz originalnega vnosa. Kliknite “Nadaljuj”. Sedaj ste v delovnem toku oddaje
+      vnosa.</li>
+      <li>Spremenite želene metapodatke. Minimalna sprememba metapodatkov je potrebna vsaj v naslovu,
+	kjer je potrebno jasno označiti novo različico vnosa. To storite tako, da v naslovu zbrišete avtomatsko
+	ustvarjen datum, dodate novo
+	številko različice in v opisu na kratko opišete razlike med novo in prejšnjo različico. Če
+	se je z novo različico spremenila tudi velikost, spremenite tudi informacije o velikosti
+	vira.</li>
+      <li>Naložite podatke nove različice in zaključite vnos.</li>
+    </ol>
+    <p>Ko je oddaja končana, se stara in nova različica samodejno povežeta, tako da uporabniki vidijo,
+      da obstajajo novejše oz. starejše različice vira.</p>
+    <p>Daljši, in s slikami opremljen opis je dostopen na
+      <a href="https://github.com/ufal/clarin-dspace/wiki/New-Version-Guide">GitHub strani CLARIN-DSPACE</a>.</p>
+    </div>
+    
+    <div>
+      <h3 id="restricted-submissions">Omejeni vnosi</h3>
+      <p>Vsi metapodatki so vedno javno dostopni. Podpiramo predvsem prosto dostopne
+      vnose, vendar tudi <strong>omejevalne licence</strong> za bitne tokove, ki za
+      prenos podatkov potrebujejo elektronski podpis. Vodimo evidenco elektronskih
+	podpisov za primere kršitev pravic intelektualne lastnine.</p>
+      
+      <p><a href="licenses">Oglejte si seznam licenc, ki so trenutno na voljo</a>, ali
+       nam <a class="helpdesk-tolink" href="#">pišite</a>, da dodamo novo.</p>
+      <p>Podpiramo tudi omejitve bitnih tokov, kar pomeni, da bitni tokovi postanejo
+      javno dostopni šele po določenem datumu.</p>
+    </div>
+    
+</div> 

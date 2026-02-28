@@ -1,0 +1,156 @@
+﻿<div id="faq-like">
+
+	<h2 id="ufal-point-faq">O metapodatkih</h2>
+	<p>Tukaj boste našli informacije o tem, katere metapodatke potrebujemo in kako jih razširjamo. Metapodatki so prosto dostopni in v javni lasti (pod licenco <a href="http://creativecommons.org/about/cc0">CC0</a>). Pridržujemo si pravico do obveščenosti o komercialni rabi metapodatkov iz repozitorija CLARIN.SI in namenu njihove uporabe, ki jih sporočite na <a class="helpdesk-tolink" href="#">Pomoč uporabnikom</a>.</p>
+
+    <hr />
+	<ul id="faqs-list">
+		<li><a href="#formats">Formati metapodatkov</a></li>	
+		<li><a href="#metadata">Vneseni metapodatki</a></li>	
+		<li><a href="#mapping">Preslikava metapodatkov</a></li>	
+	</ul>
+    <hr />
+	<div>
+		<h3 id="formats">Formati metapodatkov</h3>
+		<p>
+			Med postopkom vnašanja v repozitorij uporabniki izpolnijo metapodatkovna polja, ki se shranijo kot del zapisa. Metapodatke vnosov lahko razširjamo v različnih formatih, vključno s (vendar ne omejeno na) formatoma <a href="http://clarin.eu/cmdi">CMDI</a> in <a href="http://www.openarchives.org/OAI/2.0/oai_dc.xsd">oai_dc</a>. Oglejte si <a href="https://www.clarin.si/repository/oai/request?verb=ListMetadataFormats">seznam vseh podprtih formatov</a>, vendar bodite pozorni, saj pri določenih vnosih nekaterih formatov ni možno uporabiti. Različni formati pomagajo pri promoviranju podatkov v številnih agregatorjih (in/ali spletnih iskalnikih)	
+		</p>
+		<h4>CMDI</h4>
+		<p>Za več informacij si preberite CLARIN-ov uvod v <a href="http://clarin.eu/cmdi">komponentne metapodatke</a>.
+		</p>
+		<p>
+			Trenutni vnosi v repozitorij sledijo profilu/shemi <a href="https://catalog.clarin.eu/ds/ComponentRegistry?registrySpace=published&amp;itemId=clarin.eu:cr1:p_1403526079380">clarin.eu:cr1:p_1403526079380</a>. 
+		</p>
+		<p>Ta profil je dobro opremljen s povezavami do registra pojmov.</p>
+		<h4>oai_dc</h4>
+		<p>Uporabo formata oai_dc zahteva protokol <a href="http://www.openarchives.org/OAI/2.0/oai_dc.xsd">OAI-PMH</a>. O tem, kako vnose preslikamo v ta format, lahko preberete v poglavju o <a href="#mapping">preslikavi metapodatkov</a>.</p>
+	</div>	
+	<br />
+	<div>
+		<h3 id="metadata">Vneseni metapodatki</h3>
+		<p>Spodnji seznam prikazuje vsa polja, ki se pojavijo med postopkom vnašanja v repozitorij.  Seznam se bo zelo verjetno še spreminjal. Metapodatki se vnašajo v angleščini. Različni formati vsebujejo različno ustvarjene metapodatke (na primer imena v človeku razumljivem jeziku, ki spremljajo oznake ISO, identifikatorje ali druge podatke).</p>
+		<table class="table-bordered">
+			<thead>
+				<tr><th>Ime polja</th><th>Opis</th><th>Status</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Vrsta</strong></td>
+					<td>Vrsta vira: »Korpus" zajema besedilne, govorne in multimodalne korpuse. »Leksikalnokonceptualni vir« obsega leksikone, ontologije, slovarje, sezname besed itd. "Jezikovni opis" pokriva jezikovne modele in slovnice. "Tehnologija/orodje/storitev" se uporablja za orodja, sisteme, komponente sistemov itd.</td>
+					<td><span class="label label-info">obvezno</span></td>
+				</tr>
+				<tr>
+					<td><strong>Naslov</strong></td>
+					<td>Glavni naslov vnosa.</td>
+					<td><span class="label label-info">obvezno</span></td>
+				</tr>
+				<tr>
+					<td><strong>URL projekta</strong></td>
+					<td>Naslov URL vira/projekta, povezanega z vnosom (na primer spletna stran projekta). Nadzorovano z regularnimi izrazi (regexp, začne se s http/https).</td>
+					<td><span class="label label-info">nadzorovano z regexp</span></td>
+				</tr>
+				<tr>
+					<td><strong>Demo URL</strong></td>
+					<td>Demo, vzorci ali pri orodjih URL vzorčnega izhoda. Nadzorovano z regularnimi izrazi (regexp, začne se s http/https).</td>
+					<td><span class="label label-info">nadzorovano z regexp</span></td>
+				</tr>
+				<tr>
+					<td><strong>Datum objave</strong></td>
+					<td>Datum morebitne objave vnesenih podatkov, na primer 2014-01-21 ali vsaj leto.</td>
+					<td><span class="label label-info">obvezno</span></td>
+				</tr>
+				<tr>
+					<td><strong>Avtor</strong></td>
+					<td>Imena avtorjev vnosa. V primeru zbirk (na primer korpusov ali drugih večjih besedilnih baz) je priporočljivo vnesti imena ljudi, ki so sodelovali pri pripravi celotne zbirke, in ne avtorjev posameznih del. Osebna imena se shranjujejo na način priimek, vejica, ime (na primer "Smith, John Jr.").</td>
+					<td><span class="label label-info">obvezno</span><span class="label label-info">ponavljajoče</span></td>
+				</tr>
+				<tr>
+					<td><strong>Založnik</strong></td>
+					<td>Ime organizacije/organa, ki je objavila katerokoli predhodno različico vnosa, ali ime matične institucije.</td>
+					<td><span class="label label-info">obvezno</span><span class="label label-info">ponavljajoče</span></td>
+				</tr>
+				<tr>
+					<td><strong>Kontaktna oseba</strong></td>
+					<td>Oseba, na katero se obrnete v primeru težav z vnosom. Nekdo, ki lahko priskrbi informacije o viru, na primer eden izmed avtorjev vira ali avtor vnosa. Shranjeno kot strukturiran niz, ki zajema ime, priimek, e-poštni naslov in matično institucijo.</td>
+					<td><span class="label label-info">obvezno</span><span class="label label-info">ponavljajoče</span></td>
+				</tr>
+				<tr>
+					<td><strong>Financiranje</strong></td>
+					<td>Sponzorji, ki so financirali delo, opisano v vnosu. Shranjeno kot strukturiran niz, ki zajema ime projekta, oznako projekta, financerja, vrsto sredstev (lastna/državna/evropska) in identifikator OpenAIRE (ta se shrani tudi v dc.relation)</td>
+					<td><span class="label label-info">ponavljajoče</span></td>
+				</tr>
+				<tr>
+					<td><strong>Opis</strong></td>
+					<td>Besedilni opis vnosa.</td>
+					<td><span class="label label-info">obvezno</span></td>
+				</tr>
+				<tr>
+					<td><strong>Jezik</strong></td>
+					<td>Jezik(i) glavne vsebine vnosa. Shranjeno kot oznaka ISO 639-3. Obvezno za korpuse, leksikalnokonceptualne vire in jezikovne opise.</td>
+					<td><span class="label label-info">ponavljajoče</span><span class="label label-info">obvezno glede na vrsto vira</span></td>
+				</tr>
+				<tr>
+					<td><strong>Ključne besede</strong></td>
+					<td>Ključne besede, povezane z vsebino vnosa.</td>
+					<td><span class="label label-info">ponavljajoče</span><span class="label label-info">obvezno</span></td>
+				</tr>
+				<tr>
+					<td><strong>Velikost</strong></td>
+					<td>Obseg vnesenih podatkov, na primer število pojavnic ali datotek.</td>
+					<td><span class="label label-info">ponavljajoče</span></td>
+				</tr>
+				<tr>
+					<td><strong>Vrsta medija</strong></td>
+					<td>Medij glavne vsebine vnosa, na primer besedilo ali zvočni zapis. Spustni seznam, obvezno za korpuse, jezikovne opise in leksikalnokonceptualne vire.</td>
+					<td><span class="label label-info">spustni seznam</span><span class="label label-info">obvezno glede na vrsto vira</span></td>
+				</tr>
+				<tr>
+					<td><strong>Podrobneje o vrsti</strong></td>
+					<td>Podrobnejša klasifikacija vrste vira. Spustni seznam, obvezno za orodja, jezikovne opise in leksikalne konceptualne vire.</td>
+					<td><span class="label label-info">spustni seznam</span><span class="label label-info">obvezno glede na vrsto vira</span></td>
+				</tr>
+				<tr>
+					<td><strong>Odvisnost od jezika</strong></td>
+					<td>Boolova vrednost, ki prikazuje, ali je določeno orodje/storitev odvisna od jezika. Obvezno za orodja.</td>
+					<td><span class="label label-info">obvezno glede na vrsto orodja</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<div>
+		<h3 id="mapping">Preslikava metapodatkov</h3>
+		<p>Spodnja tabela prikazuje preslikavo vnosa v format oai_dc. Navedena so tudi nekatera pomembnejša polja, ki se ustvarijo samodejno.</p>
+		<table class="table-bordered">
+			<thead>
+				<tr><th>Polje vnosa</th><th>Preslikano polje</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Vrsta</td><td>dc.type</td></tr>
+				<tr><td>Naslov</td><td>dc.title</td></tr>
+				<tr><td>URL projekta</td><td>dc.source</td></tr>
+				<tr><td>Demo URL</td><td>ni preslikano</td></tr>
+				<tr><td>Datum objave</td><td>dc.date</td></tr>
+				<tr><td>Avtor</td><td>dc.creator</td></tr>
+				<tr><td>Založnik</td><td>dc.publisher</td></tr>
+				<tr><td>Kontaktna oseba</td><td>ni preslikano</td></tr>
+				<tr><td>Financiranje</td><td>ni preslikano</td></tr>
+				<tr><td>Opis</td><td>dc.description</td></tr>
+				<tr><td>Jezik</td><td>dc.language</td></tr>
+				<tr><td>Ključne besede</td><td>dc.subject</td></tr>
+				<tr><td>Velikost</td><td>ni preslikano</td></tr>
+				<tr><td>Vrsta medija</td><td>ni preslikano</td></tr>
+				<tr><td>Podrobneje o vrsti</td><td>ni preslikano</td></tr>
+			</tbody>
+		</table>
+		<table class="table-bordered">
+			<thead>
+				<tr><th>Samodejno ustvarjeno polje</th><th>Opis</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>dc.identifier</td><td>PID vira (trenutno handle).</td></tr>
+				<tr><td>dc.rights</td><td>Ponavljajoče polje, ki lahko vsebuje ime licence, s katero so določeni pogoji distribucije vira, naslov URL do celotnega besedila licence in tako imenovano oznako (PUB, ACA, RES).</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div> 
