@@ -8940,6 +8940,8 @@
 
   // "language.czech": "Czech",
   "language.czech": "Češki",  // REVIEW: PENDING | source: claude
+  // "language.slovene": "Slovene",
+  "language.slovene": "Slovenščina",
 
   // "repository.policy.page": "Change me: policy page",
   "repository.policy.page": "Spremeni me: stran o pravilniku",  // REVIEW: PENDING | source: claude
