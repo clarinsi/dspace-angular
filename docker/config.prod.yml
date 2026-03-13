@@ -1,3 +1,5 @@
-# This is a sample config file for frontend.
-# Replace with production config.prod.yml.
-# It will be mounted to docker container.
+rest:
+  ssl: false
+  host: fedo.ijs.si
+  port: 80
+  nameSpace: /server

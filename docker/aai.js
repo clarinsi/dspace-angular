@@ -57,13 +57,14 @@
         var djc = DiscoJuice.Hosted.getConfig(
           opts.serviceName,
           opts.ourEntityID,
-          opts.responseUrl,
+          '',
           [ ],
           opts.host + opts.port + '/Shibboleth.sso/Login?SAMLDS=1&target=' + targetUrl + '&entityID=');
         djc.discoPath = window.location.origin + (namespace === '' ? namespace : '/' + namespace) + "/assets/";
         djc.metadata = [opts.metadataFeed];
         djc.subtitle = "Login via Your home institution (e.g. university)";
         djc.textHelp = opts.textHelp;
+        djc.countryAPI = "https://lindat.mff.cuni.cz/php/discojuice/country.php";
         djc.textHelpMore = opts.textHelpMore;
 
         djc.inlinemetadata = typeof opts.inlinemetadata === 'object' ? opts.inlinemetadata : [];

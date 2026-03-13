@@ -18,7 +18,8 @@ networks:
       config:
         # Define a custom subnet for our DSpace network, so that we can easily trust requests from host to container.
         # If you customize this value, be sure to customize the 'proxies.trusted.ipranges' env variable below.
-        - subnet: 172.2${INSTANCE}.0.0/16
+        # NOTE: 172.x.x.x conflicts with IJS internal network; using 192.168.78.x instead.
+        - subnet: 192.168.78.0/24
 services:
   # DSpace (backend) webapp container
   dspace:
@@ -41,7 +42,7 @@ services:
       solr__P__server: http://dspacesolr:898${INSTANCE}/solr
       # proxies.trusted.ipranges: This setting is required for a REST API running in Docker to trust requests
       # from the host machine. This IP range MUST correspond to the 'dspacenet' subnet defined above.
-      proxies__P__trusted__P__ipranges: '172.2${INSTANCE}.0'
+      proxies__P__trusted__P__ipranges: '192.168.78'
       #S3 config
       assetstore__P__index__P__primary: ${S3_STORAGE:-0}
       assetstore__P__s3__P__enabled: ${S3_ENABLED:-false}
