@@ -14,6 +14,28 @@ and wrong.
 ⚠️ **Remaining Work:**
 - Review ~2,145 pending translation keys (out of ~3,100 total)
 
+## Translator workflow (testing changes on the live server)
+
+Interface strings are part of the webpack build, so editing `sl.json5` triggers an automatic
+recompile. The dev server watches for file changes, but only inside the container.
+
+**To test an edited `sl.json5` on the live server:**
+
+1. Edit `src/assets/i18n/sl.json5` on the host.
+2. Copy it into the running container:
+   ```bash
+   docker cp src/assets/i18n/sl.json5 dspace-angular0:/app/src/assets/i18n/
+   ```
+3. Watch the container logs for webpack to finish recompiling (~30–60 s):
+   ```bash
+   docker logs -f dspace-angular0
+   ```
+4. Reload the browser once you see `Compiled successfully`.
+
+> **Note:** This is different from editing static HTML pages (`src/static-files/sl/*.html`),
+> which are served as plain HTTP assets and are visible **immediately** after `docker cp`
+> with no recompile. See `src/static-files/sl/README.md` for that workflow.
+
 ## Quick Start Guide
 
 ### 1. Set Up Translation Tools

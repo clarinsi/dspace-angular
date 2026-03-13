@@ -58,6 +58,26 @@ The static HTML files in this directory are:
 - [licence-aca-id-by-nc-inf-nored-1.0.html](licence-aca-id-by-nc-inf-nored-1.0.html):
   CLARIN.SI licence texts (CLARIN.SI only, not part of LINDAT DSpace).
 
+## Translator workflow (testing changes on the live server)
+
+Static HTML files are served as plain HTTP assets — they are **not** compiled into the Angular
+bundle. This means you can update a page in the running container without rebuilding the Docker image.
+
+**For each file you edit:**
+
+1. Edit the file on the host, e.g. `src/static-files/about.html`.
+2. Copy it into the running container:
+   ```bash
+   docker cp src/static-files/about.html dspace-angular0:/app/src/static-files/
+   ```
+3. Reload the page in your browser — the change is **immediately visible**, no recompile needed.
+
+Pages are accessible at `http://fedo.ijs.si/static/<filename-without-.html>`,
+e.g. `about.html` → `http://fedo.ijs.si/static/about`.
+
+> **Note:** This is different from editing interface strings (`sl.json5`), which do trigger a
+> webpack recompile (~30–60 s). See `src/assets/i18n/README.md` for that workflow.
+
 ## References
 
 - v5 English originals: `clarin-dspace:dspace-xmlui/src/main/webapp/themes/UFAL/lib/html/`
