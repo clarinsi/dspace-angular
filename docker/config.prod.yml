@@ -1,5 +1,4 @@
-rest:
-  ssl: false
-  host: fedo.ijs.si
-  port: 80
-  nameSpace: /server
+# Production config overrides for dspace-angular.
+# Mounted into the container at /app/config/config.prod.yml.
+# REST host/port/ssl are set via environment variables in docker-compose.yml
+# (DSPACE_REST_HOST, DSPACE_REST_PORT, DSPACE_REST_SSL) which take precedence.
