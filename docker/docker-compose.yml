@@ -26,12 +26,14 @@ services:
     image: ${DSPACE_UI_IMAGE:-ufal/dspace-angular:dspace-7_x}
     volumes:
     - ./config.prod.yml:/app/config/config.prod.yml
+    - ../src:/app/src
     - ./aai.js:/app/src/aai/aai.js
     - ./aai.js:/app/dist/browser/aai.js
 #    - ./dspace-ui.json:/app/docker/dspace-ui.json:rw
     build:
       context: ..
       dockerfile: Dockerfile
+      network: host
     networks:
       dspacenet:
     entrypoint: ${FE_CMD:-/bin/sh -c "pm2-runtime start docker/dspace-ui.json > /dev/null 2> /dev/null"}
