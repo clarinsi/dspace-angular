@@ -46,17 +46,17 @@ export class HeaderComponent implements OnInit {
   }
 
   /**
-  * Returns the current language code only if it's Czech ('cs'), otherwise returns an empty string
-  * @returns {string} The language code if Czech, empty string otherwise
+  * Returns the current language code only if it is Slovenian ('sl'), otherwise returns an empty string
+  * @returns {string} The language code if Slovenian, empty string otherwise
   */
-  getLangCodeIfCzech(): string {
-    return this.localeService.getCurrentLanguageCode() === 'cs' ? 'cs' : '';
+  getLangCodeIfSlovenian(): string {
+    return this.localeService.getCurrentLanguageCode() === 'sl' ? 'sl' : '';
   }
 
   /**
-  * Translates English slugs to their Czech equivalents when the current language is Czech
+  * Translates English slugs to their Slovenian equivalents when the current language is Slovenian
   * @param {string} slug - The English slug to translate
-  * @returns {string} The translated slug if in Czech, the original slug if in English, or empty string if translation not found
+  * @returns {string} The translated slug if in Slovenian, the original slug if in English, or empty string if translation not found
   */
   translateSlug(slug: string): string {
     const currentLang = this.localeService.getCurrentLanguageCode();
@@ -65,10 +65,10 @@ export class HeaderComponent implements OnInit {
     }
 
     const translations = {
-      'partners': this.getLangCodeIfCzech() + '/' + 'partneri',
-      'integration': this.getLangCodeIfCzech() + '/' + 'integrace',
-      'partnership': this.getLangCodeIfCzech() + '/' + 'partnerstvi',
-      'services': 'sluzby'
+      'partners': this.getLangCodeIfSlovenian() + '/' + 'partnerji',
+      'integration': this.getLangCodeIfSlovenian() + '/' + 'integracija',
+      'partnership': this.getLangCodeIfSlovenian() + '/' + 'partnerstvo',
+      'services': 'storitve'
     };
 
     return translations[slug] || '';
