@@ -1,4 +1,4 @@
-{
+!{
   // "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
   "401.help": "Nimate dovoljenja za dostop do te strani. Spodnji gumb lahko uporabite, da se vrnete na domačo stran.",  // REVIEW: PENDING | source: claude
 
@@ -6336,8 +6336,8 @@
   // ALT (claude): "Skladišče DSpace"
   "repository.title": "Repozitorij",  // REVIEW: PENDING | source: dspace5 (match: 0.74)
 
-  // "repository.title.prefix": "LINDAT/CLARIAH-CZ Repository ",
-  "repository.title.prefix": "LINDAT/CLARIAH-CZ Repozitorij",  // REVIEW: PENDING | source: claude
+  // "repository.title.prefix": "CLARIN.SI Repository ",
+  "repository.title.prefix": "CLARIN.SI Repozitorij",  // REVIEW: PENDING | source: claude
 
   // "repository.title.prefixDSpace": "DSpace",
   "repository.title.prefixDSpace": "DSpace",  // REVIEW: PENDING | source: claude

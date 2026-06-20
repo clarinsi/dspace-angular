@@ -1,4 +1,4 @@
-{
+!{
 
   // "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
   "401.help": "Chan eil cead agad airson na duilleig seo. Cleachd am putan gu h-ìosal airson tilleadh chun na duilleig-dachaigh.",
@@ -6729,9 +6729,9 @@
   // TODO New key - Add a translation
   "repository.title": "DSpace Repository",
 
-  // "repository.title.prefix": "LINDAT/CLARIAH-CZ Repository ",
+  // "repository.title.prefix": "CLARIN.SI Repository ",
   // TODO New key - Add a translation
-  "repository.title.prefix": "LINDAT/CLARIAH-CZ Repository ",
+  "repository.title.prefix": "CLARIN.SI Repository ",
 
   // "repository.title.prefixDSpace": "DSpace",
   // TODO New key - Add a translation

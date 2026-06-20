@@ -6447,7 +6447,7 @@
   // TODO New key - Add a translation
   "repository.title": "DSpace Repository",
 
-  // "repository.title.prefix": "LINDAT/CLARIAH-CZ Repository ",
+  // "repository.title.prefix": "CLARIN.SI Repository ",
   "repository.title.prefix": "Digital Library ::",
 
   // "repository.title.prefixDSpace": "DSpace",
