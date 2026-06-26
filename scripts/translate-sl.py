@@ -7,9 +7,9 @@ This script translates the English translation file to Slovenian using:
 2. Claude API - fallback for new strings
 
 Fuzzy matching thresholds:
-- >= 0.90: High confidence - use DSpace 5, mark as REVIEW: DONE
-- 0.70-0.89: Medium confidence - use DSpace 5, mark as REVIEW: PENDING
-- < 0.70: Low confidence - use Claude, show DSpace 5 as alternative
+- >= 0.90: High confidence - use DSpace 5, mark as REVIEW: OPTIONAL
+- 0.70-0.89: Medium confidence - use DSpace 5, mark as REVIEW: RECOMMENDED
+- < 0.70: Low confidence - use Claude, show DSpace 5 as alternative, mark as REVIEW: NECESSARY
 
 Usage:
   1. Install dependencies: pip install anthropic json5 rapidfuzz lxml
@@ -254,9 +254,9 @@ def stats_only_mode(high_threshold, medium_threshold):
     print('=' * 70)
     print(f'\n  Total keys: {total}')
     print(f'\n  High confidence  (>= {high_threshold:.0%}): {stats["high"]:5d}  '
-          f'({stats["high"]/total*100:5.1f}%)  -> reuse DSpace 5, mark DONE')
+          f'({stats["high"]/total*100:5.1f}%)  -> reuse DSpace 5, mark OPTIONAL')
     print(f'  Medium confidence ({medium_threshold:.0%}-{high_threshold:.0%}): {stats["medium"]:5d}  '
-          f'({stats["medium"]/total*100:5.1f}%)  -> reuse DSpace 5, mark PENDING')
+          f'({stats["medium"]/total*100:5.1f}%)  -> reuse DSpace 5, mark RECOMMENDED')
     print(f'  Low confidence   (< {medium_threshold:.0%}): {stats["low"]:5d}  '
           f'({stats["low"]/total*100:5.1f}%)  -> use Claude API')
     print(f'  No match at all        : {stats["no_match"]:5d}  '
@@ -304,10 +304,10 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
             print("No existing statuses found - will translate all keys")
 
     # Determine which statuses to skip
-    if update_mode == 'pending':
-        skip_statuses = {'DONE', 'IN_PROGRESS', 'NEEDS_WORK'}
-    elif update_mode == 'in-progress':
-        skip_statuses = {'DONE', 'NEEDS_WORK'}
+    if update_mode == 'necessary':
+        skip_statuses = {'OPTIONAL', 'RECOMMENDED'}
+    elif update_mode == 'recommended':
+        skip_statuses = {'OPTIONAL'}
     else:
         skip_statuses = set()
 
@@ -358,10 +358,10 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
             )
 
             if match_score >= high_threshold:
-                # High confidence - use DSpace 5, mark as DONE
+                # High confidence - use DSpace 5, mark as OPTIONAL
                 translation = dspace5_translation
                 source = 'dspace5'
-                review_status = 'DONE'
+                review_status = 'OPTIONAL'
                 stats['dspace5_high'] += 1
 
                 # Format output
@@ -373,10 +373,10 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 output_lines.append('')
 
             elif match_score >= medium_threshold:
-                # Medium confidence - use DSpace 5, needs review
+                # Medium confidence - use DSpace 5, review recommended
                 translation = dspace5_translation
                 source = 'dspace5'
-                review_status = 'PENDING'
+                review_status = 'RECOMMENDED'
                 stats['dspace5_medium'] += 1
 
                 # Get Claude translation as alternative
@@ -402,7 +402,7 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 # Low confidence - use Claude, show DSpace 5 as alternative
                 translation = translate_with_claude(value)
                 source = 'claude'
-                review_status = 'PENDING'
+                review_status = 'NECESSARY'
                 stats['claude_primary'] += 1
 
                 output_lines.append(f'  // {j5(key)}: {j5(value)},')
@@ -419,7 +419,7 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 # No DSpace 5 match - use Claude only
                 translation = translate_with_claude(value)
                 source = 'claude'
-                review_status = 'PENDING'
+                review_status = 'NECESSARY'
                 stats['claude_only'] += 1
 
                 output_lines.append(f'  // {j5(key)}: {j5(value)},')
@@ -447,7 +447,7 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
             output_lines.append(f'  // {j5(key)}: {j5(value)},')
             output_lines.append(
                 f'  {j5(key)}: {j5(value)},  '
-                f'// REVIEW: PENDING | ERROR: Translation failed'
+                f'// REVIEW: NECESSARY | ERROR: Translation failed'
             )
             output_lines.append('')
 
@@ -492,10 +492,10 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
 
     print(f'\n📁 Output: {SL_PATH}')
     print('\n📝 Next steps:')
-    print('   1. Review translations: grep "REVIEW: PENDING" src/assets/i18n/sl.json5')
+    print('   1. Review translations: grep "REVIEW: NECESSARY" src/assets/i18n/sl.json5')
     print('   2. Check progress: python scripts/review-progress.py')
-    print('   3. Start reviewing and update markers to REVIEW: DONE')
-    print('   4. Pay special attention to medium-confidence DSpace 5 matches')
+    print('   3. After reviewing a translation, update its marker to REVIEW: OPTIONAL')
+    print('   4. Also check RECOMMENDED items (medium-confidence DSpace 5 matches)')
 
 
 def main():
@@ -506,7 +506,7 @@ def main():
         epilog="""examples:
   %(prog)s --stats-only            Show match distribution (no API key needed)
   %(prog)s                         Full regeneration (needs ANTHROPIC_API_KEY)
-  %(prog)s --update pending        Only translate keys with PENDING status
+  %(prog)s --update necessary      Only translate keys with NECESSARY status
   %(prog)s --high 0.85 --medium 0.60  Use custom thresholds"""
     )
     parser.add_argument(
@@ -520,9 +520,9 @@ def main():
         help=f'Medium confidence threshold (default: {MEDIUM_CONFIDENCE_THRESHOLD})'
     )
     parser.add_argument(
-        '--update', choices=['pending', 'in-progress', 'all'], default='all',
-        help='Which keys to re-translate: pending (skip DONE/IN_PROGRESS/NEEDS_WORK), '
-             'in-progress (skip DONE/NEEDS_WORK), all (regenerate everything, default)'
+        '--update', choices=['necessary', 'recommended', 'all'], default='all',
+        help='Which keys to re-translate: necessary (skip OPTIONAL/RECOMMENDED), '
+             'recommended (skip OPTIONAL), all (regenerate everything, default)'
     )
     parser.add_argument(
         '--stats-only', action='store_true',

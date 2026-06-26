@@ -12,7 +12,7 @@ and wrong.
 - Slovenian (sl) set as active alongside English (en)
 
 ⚠️ **Remaining Work:**
-- Review ~2,145 pending translation keys (out of ~3,100 total)
+- Review ~2,145 NECESSARY/RECOMMENDED translation keys (out of ~3,100 total)
 
 ## Translator workflow (testing changes on the live server)
 
@@ -69,29 +69,29 @@ python scripts/translate-sl.py --stats-only
 # Run full translation (overwrites everything)
 python scripts/translate-sl.py
 
-# Re-translate only PENDING keys (preserves DONE and IN_PROGRESS translations)
-python scripts/translate-sl.py --update pending
+# Re-translate only NECESSARY keys (preserves OPTIONAL and RECOMMENDED translations)
+python scripts/translate-sl.py --update necessary
 
-# Adjust thresholds and re-translate pending
-python scripts/translate-sl.py --high 0.95 --medium 0.80 --update pending
+# Adjust thresholds and re-translate necessary
+python scripts/translate-sl.py --high 0.95 --medium 0.80 --update necessary
 ```
 
 **Smart Translation Strategy:**
 1. **First, try DSpace 5 reuse** - Fuzzy match each DSpace 7 English string with DSpace 5 translations
-   - `≥ 90% match`: Use DSpace 5 translation, mark as `REVIEW: DONE` (high confidence)
-   - `70-89% match`: Use DSpace 5 translation, mark as `REVIEW: PENDING`, include Claude alternative
-   - `< 70% match`: Use Claude translation, include DSpace 5 as alternative
+   - `≥ 90% match`: Use DSpace 5 translation, mark as `REVIEW: OPTIONAL` (high confidence)
+   - `70-89% match`: Use DSpace 5 translation, mark as `REVIEW: RECOMMENDED`, include Claude alternative
+   - `< 70% match`: Use Claude translation, include DSpace 5 as alternative, mark as `REVIEW: NECESSARY`
 2. **Fallback to Claude API** - For new strings with no good DSpace 5 match
 
 **Configurable Thresholds:**
-- `--high` (default 0.90): Matches above this are marked DONE
-- `--medium` (default 0.70): Matches above this use DSpace 5 but marked PENDING
+- `--high` (default 0.90): Matches above this are marked OPTIONAL
+- `--medium` (default 0.70): Matches above this use DSpace 5 but marked RECOMMENDED
 - Use `--stats-only` to preview match distribution before committing
 
 **Update Modes:**
 - `--update all` (default): Full regeneration, overwrites everything
-- `--update pending`: Only re-translate PENDING keys, preserve IN_PROGRESS + DONE
-- `--update in-progress`: Re-translate PENDING + IN_PROGRESS, preserve DONE
+- `--update necessary`: Only re-translate NECESSARY keys, preserve OPTIONAL + RECOMMENDED
+- `--update recommended`: Re-translate NECESSARY + RECOMMENDED, preserve OPTIONAL
 
 **Benefits:**
 - Reuses existing reviewed translations (~31% auto-approved from DSpace 5)
@@ -106,22 +106,19 @@ python scripts/translate-sl.py --high 0.95 --medium 0.80 --update pending
 python scripts/review-progress.py
 ```
 
-**Find pending items:**
+**Find items needing review:**
 ```bash
-# All pending translations
-grep -n "REVIEW: PENDING" src/assets/i18n/sl.json5
+# All necessary translations (highest priority)
+grep -n "REVIEW: NECESSARY" src/assets/i18n/sl.json5
 
 # Specific section (e.g., navigation)
-grep -n "navigation.*REVIEW: PENDING" src/assets/i18n/sl.json5
+grep -n "navigation.*REVIEW: NECESSARY" src/assets/i18n/sl.json5
 ```
 
 **Update review status as you work:**
 ```json5
-// Good translation → mark as DONE
-"404.page-not-found": "stran ni bila najdena",  // REVIEW: DONE
-
-// Needs attention → mark as IN_PROGRESS with optional note
-"login.help": "Potrebujete pomoč pri prijavi?",  // REVIEW: IN_PROGRESS | note: too formal
+// After reviewing and approving a translation → mark as OPTIONAL
+"404.page-not-found": "stran ni bila najdena",  // REVIEW: OPTIONAL
 ```
 
 ### 4. Check and commit changes
@@ -139,7 +136,7 @@ git push si localisation
 **Current State:** The file has been machine-translated with proper formatting. Each key has:
 - English original as a comment above
 - Slovenian translation as the value
-- Review status marker (`REVIEW: DONE` or `REVIEW: PENDING`)
+- Review status marker (`REVIEW: OPTIONAL`, `REVIEW: RECOMMENDED`, or `REVIEW: NECESSARY`)
 
 When reviewing, translate the **values** (right side) while keeping the **keys** (left side) unchanged.
 
@@ -202,14 +199,14 @@ python scripts/translate-sl.py --stats-only
 # Run full translation (first time or regeneration)
 python scripts/translate-sl.py
 
-# Or re-translate only pending items (preserves reviewed work)
-python scripts/translate-sl.py --update pending
+# Or re-translate only necessary items (preserves reviewed work)
+python scripts/translate-sl.py --update necessary
 ```
 
 This will generate/update `src/assets/i18n/sl.json5` with:
 - English original as comments
 - Machine-translated Slovenian text
-- Review markers: `// REVIEW: DONE` (high-confidence) or `// REVIEW: PENDING`
+- Review markers: `// REVIEW: OPTIONAL` (high-confidence), `// REVIEW: RECOMMENDED`, or `// REVIEW: NECESSARY`
 
 ### Step 3: Translation Guidelines
 
@@ -247,28 +244,27 @@ After machine translation, review translations incrementally. The inline review 
    python scripts/review-progress.py
    ```
 
-2. **Find pending translations** (by priority or section):
+2. **Find items needing review** (by priority or section):
    ```bash
-   # All pending items
-   grep -n "REVIEW: PENDING" src/assets/i18n/sl.json5
+   # All necessary items (highest priority — Claude-translated)
+   grep -n "REVIEW: NECESSARY" src/assets/i18n/sl.json5
 
-   # Pending items in specific section (e.g., navigation)
-   grep -n "navigation.*REVIEW: PENDING" src/assets/i18n/sl.json5
+   # Recommended items (medium-confidence DSpace 5 matches)
+   grep -n "REVIEW: RECOMMENDED" src/assets/i18n/sl.json5
+
+   # Specific section (e.g., navigation)
+   grep -n "navigation.*REVIEW: NECESSARY" src/assets/i18n/sl.json5
    ```
 
 3. **Review and update status:**
    ```json5
-   // Before review
+   // Before review (Claude-translated, needs attention)
    // "404.page-not-found": "page not found",
-   "404.page-not-found": "stran ni byla najdena",  // REVIEW: PENDING
+   "404.page-not-found": "stran ni bila najdena",  // REVIEW: NECESSARY
 
-   // After review - translation is good
+   // After review - translation is good → upgrade to OPTIONAL
    // "404.page-not-found": "page not found",
-   "404.page-not-found": "stran ni bila najdena",  // REVIEW: DONE
-
-   // Needs attention or being worked on
-   // "404.help": "We can't find the page...",
-   "404.help": "Ne moremo najti strani...",  // REVIEW: IN_PROGRESS | note: too literal
+   "404.page-not-found": "stran ni bila najdena",  // REVIEW: OPTIONAL
    ```
 
 4. **Track progress regularly:**
@@ -280,11 +276,9 @@ After machine translation, review translations incrementally. The inline review 
 
 | Status | Meaning | When `--update` re-translates |
 |--------|---------|------------------------------|
-| `PENDING` | Not yet reviewed | `pending`, `in-progress`, `all` |
-| `IN_PROGRESS` | Being worked on or needs attention | `in-progress`, `all` |
-| `DONE` | Reviewed and approved | `all` only |
-
-You can add optional notes: `// REVIEW: IN_PROGRESS | note: check terminology`
+| `NECESSARY` | Claude-translated (< 70% DSpace 5 match) — review required | `necessary`, `recommended`, `all` |
+| `RECOMMENDED` | DSpace 5 medium match (70–89%) — review recommended | `recommended`, `all` |
+| `OPTIONAL` | DSpace 5 high match (≥ 90%) — review optional | `all` only |
 
 **Tips for Team Review:**
 - Divide work by sections (navigation, search, admin, etc.)
@@ -322,21 +316,21 @@ python scripts/review-progress.py
 # Preview translation stats (no API calls)
 python scripts/translate-sl.py --stats-only
 
-# Re-translate only pending items
-python scripts/translate-sl.py --update pending
+# Re-translate only necessary items
+python scripts/translate-sl.py --update necessary
 
 # Count translations by status
-grep -c "REVIEW: DONE" src/assets/i18n/sl.json5
-grep -c "REVIEW: PENDING" src/assets/i18n/sl.json5
-grep -c "REVIEW: IN_PROGRESS" src/assets/i18n/sl.json5
+grep -c "REVIEW: OPTIONAL" src/assets/i18n/sl.json5
+grep -c "REVIEW: RECOMMENDED" src/assets/i18n/sl.json5
+grep -c "REVIEW: NECESSARY" src/assets/i18n/sl.json5
 
-# Find items needing attention
-grep -n "REVIEW: IN_PROGRESS" src/assets/i18n/sl.json5
-grep -n "REVIEW: PENDING" src/assets/i18n/sl.json5
+# Find items needing review
+grep -n "REVIEW: NECESSARY" src/assets/i18n/sl.json5
+grep -n "REVIEW: RECOMMENDED" src/assets/i18n/sl.json5
 
 # Find specific sections
-grep -n "navigation.*REVIEW: PENDING" src/assets/i18n/sl.json5
-grep -n "admin.*REVIEW: PENDING" src/assets/i18n/sl.json5
+grep -n "navigation.*REVIEW: NECESSARY" src/assets/i18n/sl.json5
+grep -n "admin.*REVIEW: NECESSARY" src/assets/i18n/sl.json5
 ```
 
 ## Translation Scripts
@@ -360,12 +354,12 @@ Generates machine-translated file with review markers using DSpace 5 reuse + Cla
 **Command-Line Options:**
 ```
 --high FLOAT      High confidence threshold (default: 0.90)
-                  Matches >= this use DSpace 5 and are marked DONE
+                  Matches >= this use DSpace 5 and are marked OPTIONAL
 --medium FLOAT    Medium confidence threshold (default: 0.70)
-                  Matches >= this use DSpace 5 but marked PENDING
---update MODE     What to update: 'pending', 'in-progress', or 'all'
-                  - pending: only re-translate PENDING keys
-                  - in-progress: re-translate PENDING + IN_PROGRESS
+                  Matches >= this use DSpace 5 but marked RECOMMENDED
+--update MODE     What to update: 'necessary', 'recommended', or 'all'
+                  - necessary: only re-translate NECESSARY keys
+                  - recommended: re-translate NECESSARY + RECOMMENDED
                   - all: full regeneration (default)
 --stats-only      Show match distribution without translating
 ```
@@ -384,11 +378,11 @@ python scripts/translate-sl.py --stats-only
 # Full translation (first run or complete regeneration)
 python scripts/translate-sl.py
 
-# Re-translate only pending items with adjusted thresholds
-python scripts/translate-sl.py --high 0.95 --medium 0.80 --update pending
+# Re-translate only necessary items with adjusted thresholds
+python scripts/translate-sl.py --high 0.95 --medium 0.80 --update necessary
 
-# Re-translate pending + in-progress items
-python scripts/translate-sl.py --update in-progress
+# Re-translate necessary + recommended items
+python scripts/translate-sl.py --update recommended
 ```
 
 **Model Used:** Claude 3 Haiku (`claude-3-haiku-20240307`) - fast and cost-effective
@@ -427,10 +421,10 @@ python scripts/review-progress.py --json
 
 📈 Detailed Status:
 
-   Total keys:         3098
-   ✅ Done:             953 (30.8%)
-   ⏳ Pending:         2145 (69.2%)
-   🔄 In Progress:        0 ( 0.0%)
+   Total keys:           3098
+   ✅ Optional:           953 (30.8%)
+   🔶 Recommended:        412 (13.3%)
+   ❗ Necessary:         1733 (55.9%)
 ```
 
 ## Priority Review Areas
