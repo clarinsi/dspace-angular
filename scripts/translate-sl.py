@@ -7,9 +7,10 @@ This script translates the English translation file to Slovenian using:
 2. Claude API - fallback for new strings
 
 Fuzzy matching thresholds:
-- >= 0.90: High confidence - use DSpace 5, mark as REVIEW: OPTIONAL
-- 0.70-0.89: Medium confidence - use DSpace 5, mark as REVIEW: RECOMMENDED
-- < 0.70: Low confidence - use Claude, show DSpace 5 as alternative, mark as REVIEW: NECESSARY
+- >= 0.90: High confidence - use DSpace 5, mark as REVIEW: OPTIONAL; Claude alternative included
+           unless match is 100% or both translations are identical
+- 0.70-0.89: Medium confidence - use DSpace 5, mark as REVIEW: RECOMMENDED; Claude alternative included
+- < 0.70: Low confidence - use Claude, mark as REVIEW: NECESSARY; DSpace 5 shown as alternative
 
 Usage:
   1. Install dependencies: pip install anthropic json5 rapidfuzz lxml
@@ -357,15 +358,27 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 value, dspace5_en, dspace5_sl, medium_threshold=medium_threshold
             )
 
+            # Call Claude once for everything that isn't a perfect DSpace 5 match.
+            # Silently suppress failure for DSpace5-backed entries (OPTIONAL/RECOMMENDED)
+            # since Claude is only an ALT there; re-raise for NECESSARY where it's primary.
+            claude_translation = None
+            if match_score < 1.0:
+                try:
+                    claude_translation = translate_with_claude(value)
+                except Exception:
+                    if match_score < medium_threshold:
+                        raise
+                    # OPTIONAL/RECOMMENDED: skip the ALT on Claude failure
+
             if match_score >= high_threshold:
-                # High confidence - use DSpace 5, mark as OPTIONAL
                 translation = dspace5_translation
                 source = 'dspace5'
                 review_status = 'OPTIONAL'
                 stats['dspace5_high'] += 1
 
-                # Format output
                 output_lines.append(f'  // {j5(key)}: {j5(value)},')
+                if claude_translation is not None and claude_translation != translation:
+                    output_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
                 output_lines.append(
                     f'  {j5(key)}: {j5(translation)},  '
                     f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
@@ -373,34 +386,23 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 output_lines.append('')
 
             elif match_score >= medium_threshold:
-                # Medium confidence - use DSpace 5, review recommended
                 translation = dspace5_translation
                 source = 'dspace5'
                 review_status = 'RECOMMENDED'
                 stats['dspace5_medium'] += 1
 
-                # Get Claude translation as alternative
-                try:
-                    claude_alt = translate_with_claude(value)
-                    output_lines.append(f'  // {j5(key)}: {j5(value)},')
-                    output_lines.append(f'  // ALT (claude): {j5(claude_alt)}')
-                    output_lines.append(
-                        f'  {j5(key)}: {j5(translation)},  '
-                        f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
-                    )
-                    output_lines.append('')
-                except:
-                    # If Claude fails, just use DSpace 5 without alternative
-                    output_lines.append(f'  // {j5(key)}: {j5(value)},')
-                    output_lines.append(
-                        f'  {j5(key)}: {j5(translation)},  '
-                        f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
-                    )
-                    output_lines.append('')
+                output_lines.append(f'  // {j5(key)}: {j5(value)},')
+                if claude_translation is not None:
+                    output_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
+                output_lines.append(
+                    f'  {j5(key)}: {j5(translation)},  '
+                    f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
+                )
+                output_lines.append('')
 
             elif dspace5_translation is not None:
                 # Low confidence - use Claude, show DSpace 5 as alternative
-                translation = translate_with_claude(value)
+                translation = claude_translation
                 source = 'claude'
                 review_status = 'NECESSARY'
                 stats['claude_primary'] += 1
@@ -417,7 +419,7 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
 
             else:
                 # No DSpace 5 match - use Claude only
-                translation = translate_with_claude(value)
+                translation = claude_translation
                 source = 'claude'
                 review_status = 'NECESSARY'
                 stats['claude_only'] += 1

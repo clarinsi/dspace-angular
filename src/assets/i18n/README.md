@@ -78,7 +78,7 @@ python scripts/translate-sl.py --high 0.95 --medium 0.80 --update necessary
 
 **Smart Translation Strategy:**
 1. **First, try DSpace 5 reuse** - Fuzzy match each DSpace 7 English string with DSpace 5 translations
-   - `≥ 90% match`: Use DSpace 5 translation, mark as `REVIEW: OPTIONAL` (high confidence)
+   - `≥ 90% match`: Use DSpace 5 translation, mark as `REVIEW: OPTIONAL`; include Claude alternative unless match is 100% or both translations are identical
    - `70-89% match`: Use DSpace 5 translation, mark as `REVIEW: RECOMMENDED`, include Claude alternative
    - `< 70% match`: Use Claude translation, include DSpace 5 as alternative, mark as `REVIEW: NECESSARY`
 2. **Fallback to Claude API** - For new strings with no good DSpace 5 match
