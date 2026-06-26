@@ -12,6 +12,9 @@ Fuzzy matching thresholds:
 - 0.70-0.89: Medium confidence - use DSpace 5, mark as REVIEW: RECOMMENDED; Claude alternative included
 - < 0.70: Low confidence - use Claude, mark as REVIEW: NECESSARY; DSpace 5 shown as alternative
 
+All machine-generated translations (Claude and partial DSpace 5 matches) are post-processed to
+match the English original in first-char case, trailing punctuation (,.:;!?), and trailing space.
+
 Usage:
   1. Install dependencies: pip install anthropic json5 rapidfuzz lxml
   2. Set your API key: export ANTHROPIC_API_KEY="your-api-key"
@@ -54,6 +57,38 @@ CLAUDE_MODEL = "claude-haiku-4-5-20251001"  # Fast and cost-effective
 def j5(val):
     """json5.dumps with proper UTF-8 (no \\uXXXX escapes for diacritics)."""
     return json5.dumps(val, ensure_ascii=False)
+
+
+PUNCT_CHARS = ',.:;!?'
+
+
+def normalize_translation(en: str, sl: str) -> str:
+    """Align sl with en on first-char case, trailing punctuation, and trailing space."""
+    if not en or not sl:
+        return sl
+
+    # First character case
+    if en[0].isalpha() and sl[0].isalpha():
+        if en[0].isupper():
+            sl = sl[0].upper() + sl[1:]
+        else:
+            sl = sl[0].lower() + sl[1:]
+
+    # Trailing punctuation (operate on space-stripped cores)
+    en_core = en.rstrip(' ')
+    sl_core = sl.rstrip(' ')
+    en_punct = en_core[-1] if en_core and en_core[-1] in PUNCT_CHARS else ''
+    sl_punct = sl_core[-1] if sl_core and sl_core[-1] in PUNCT_CHARS else ''
+    if en_punct != sl_punct:
+        if sl_punct:
+            sl_core = sl_core[:-1]
+        if en_punct:
+            sl_core = sl_core + en_punct
+
+    # Trailing space
+    sl = sl_core + (' ' if en.endswith(' ') else '')
+
+    return sl
 
 
 def parse_dspace5_messages(xml_path):
@@ -364,14 +399,14 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
             claude_translation = None
             if match_score < 1.0:
                 try:
-                    claude_translation = translate_with_claude(value)
+                    claude_translation = normalize_translation(value, translate_with_claude(value))
                 except Exception:
                     if match_score < medium_threshold:
                         raise
                     # OPTIONAL/RECOMMENDED: skip the ALT on Claude failure
 
             if match_score >= high_threshold:
-                translation = dspace5_translation
+                translation = normalize_translation(value, dspace5_translation) if match_score < 1.0 else dspace5_translation
                 source = 'dspace5'
                 review_status = 'OPTIONAL'
                 stats['dspace5_high'] += 1
@@ -386,7 +421,7 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 output_lines.append('')
 
             elif match_score >= medium_threshold:
-                translation = dspace5_translation
+                translation = normalize_translation(value, dspace5_translation)
                 source = 'dspace5'
                 review_status = 'RECOMMENDED'
                 stats['dspace5_medium'] += 1

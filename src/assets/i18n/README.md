@@ -83,6 +83,12 @@ python scripts/translate-sl.py --high 0.95 --medium 0.80 --update necessary
    - `< 70% match`: Use Claude translation, include DSpace 5 as alternative, mark as `REVIEW: NECESSARY`
 2. **Fallback to Claude API** - For new strings with no good DSpace 5 match
 
+All machine-generated translations (Claude and partial DSpace 5 matches) are automatically
+post-processed to match the English original in:
+- **First character case** — upper/lowercase aligned to the English
+- **Trailing punctuation** — last character matched if it is one of `,.:;!?`
+- **Trailing space** — preserved or removed to match the English
+
 **Configurable Thresholds:**
 - `--high` (default 0.90): Matches above this are marked OPTIONAL
 - `--medium` (default 0.70): Matches above this use DSpace 5 but marked RECOMMENDED
