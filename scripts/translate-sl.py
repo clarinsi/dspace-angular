@@ -32,9 +32,13 @@ import json5
 import os
 import re
 import sys
+import time
 from pathlib import Path
 from anthropic import Anthropic
 from rapidfuzz import fuzz, process
+
+# Force line-buffered stdout so progress shows immediately when redirected to a file.
+sys.stdout.reconfigure(line_buffering=True)
 import xml.etree.ElementTree as ET
 
 # Paths relative to project root
@@ -52,6 +56,7 @@ MEDIUM_CONFIDENCE_THRESHOLD = 0.70
 
 # Claude API configuration
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"  # Fast and cost-effective
+CHECKPOINT_PATH = SL_PATH.with_suffix('.checkpoint')
 
 
 def j5(val):
@@ -207,17 +212,21 @@ English text to translate:
 
 Slovenian translation:"""
 
-    try:
-        message = client.messages.create(
-            model=CLAUDE_MODEL,
-            max_tokens=1024,
-            messages=[{"role": "user", "content": prompt}]
-        )
-
-        return message.content[0].text.strip()
-
-    except Exception as e:
-        raise Exception(f"Translation API error: {str(e)}")
+    for attempt in range(5):
+        try:
+            message = client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=1024,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            return message.content[0].text.strip()
+        except Exception as e:
+            if '429' in str(e) and attempt < 4:
+                wait = 60 * (attempt + 1)
+                print(f"  Rate limited, waiting {wait}s before retry {attempt + 1}/4...")
+                time.sleep(wait)
+            else:
+                raise Exception(f"Translation API error: {str(e)}")
 
 
 def parse_existing_statuses(sl_path=None):
@@ -308,6 +317,29 @@ def stats_only_mode(high_threshold, medium_threshold):
     print()
 
 
+def load_checkpoint():
+    """Load per-key output lines saved by a previous interrupted run."""
+    if not CHECKPOINT_PATH.exists():
+        return {}
+    try:
+        import json
+        with open(CHECKPOINT_PATH, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        print(f"Resuming from checkpoint: {len(data)} keys already done.")
+        return data  # {key: [output_line, ...]}
+    except Exception as e:
+        print(f"⚠️  Could not read checkpoint ({e}); starting fresh.")
+        return {}
+
+
+def save_checkpoint_entry(key, lines, checkpoint):
+    """Append one key's output lines to the checkpoint file."""
+    import json
+    checkpoint[key] = lines
+    with open(CHECKPOINT_PATH, 'w', encoding='utf-8') as f:
+        json.dump(checkpoint, f, ensure_ascii=False)
+
+
 def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                    medium_threshold=MEDIUM_CONFIDENCE_THRESHOLD,
                    update_mode='all'):
@@ -366,6 +398,9 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
         'errors': 0
     }
 
+    # Load checkpoint from any previous interrupted run
+    checkpoint = load_checkpoint()
+
     output_lines = ['{']
 
     for i, (key, value) in enumerate(entries):
@@ -387,6 +422,11 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 output_lines.append('')
             continue
 
+        # Resume from checkpoint if this key was already done
+        if key in checkpoint:
+            output_lines.extend(checkpoint[key])
+            continue
+
         try:
             # Try DSpace 5 match first
             dspace5_translation, match_score, matched_key = find_best_dspace5_match(
@@ -405,20 +445,21 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                         raise
                     # OPTIONAL/RECOMMENDED: skip the ALT on Claude failure
 
+            key_lines = []
             if match_score >= high_threshold:
                 translation = normalize_translation(value, dspace5_translation) if match_score < 1.0 else dspace5_translation
                 source = 'dspace5'
                 review_status = 'OPTIONAL'
                 stats['dspace5_high'] += 1
 
-                output_lines.append(f'  // {j5(key)}: {j5(value)},')
+                key_lines.append(f'  // {j5(key)}: {j5(value)},')
                 if claude_translation is not None and claude_translation != translation:
-                    output_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
-                output_lines.append(
+                    key_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
+                key_lines.append(
                     f'  {j5(key)}: {j5(translation)},  '
                     f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
                 )
-                output_lines.append('')
+                key_lines.append('')
 
             elif match_score >= medium_threshold:
                 translation = normalize_translation(value, dspace5_translation)
@@ -426,14 +467,14 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 review_status = 'RECOMMENDED'
                 stats['dspace5_medium'] += 1
 
-                output_lines.append(f'  // {j5(key)}: {j5(value)},')
+                key_lines.append(f'  // {j5(key)}: {j5(value)},')
                 if claude_translation is not None:
-                    output_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
-                output_lines.append(
+                    key_lines.append(f'  // ALT (claude): {j5(claude_translation)}')
+                key_lines.append(
                     f'  {j5(key)}: {j5(translation)},  '
                     f'// REVIEW: {review_status} | source: {source} (match: {match_score:.2f})'
                 )
-                output_lines.append('')
+                key_lines.append('')
 
             elif dspace5_translation is not None:
                 # Low confidence - use Claude, show DSpace 5 as alternative
@@ -442,15 +483,15 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 review_status = 'NECESSARY'
                 stats['claude_primary'] += 1
 
-                output_lines.append(f'  // {j5(key)}: {j5(value)},')
-                output_lines.append(
+                key_lines.append(f'  // {j5(key)}: {j5(value)},')
+                key_lines.append(
                     f'  // ALT (dspace5, {match_score:.2f}): {j5(dspace5_translation)}'
                 )
-                output_lines.append(
+                key_lines.append(
                     f'  {j5(key)}: {j5(translation)},  '
                     f'// REVIEW: {review_status} | source: {source}'
                 )
-                output_lines.append('')
+                key_lines.append('')
 
             else:
                 # No DSpace 5 match - use Claude only
@@ -459,12 +500,15 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
                 review_status = 'NECESSARY'
                 stats['claude_only'] += 1
 
-                output_lines.append(f'  // {j5(key)}: {j5(value)},')
-                output_lines.append(
+                key_lines.append(f'  // {j5(key)}: {j5(value)},')
+                key_lines.append(
                     f'  {j5(key)}: {j5(translation)},  '
                     f'// REVIEW: {review_status} | source: {source}'
                 )
-                output_lines.append('')
+                key_lines.append('')
+
+            output_lines.extend(key_lines)
+            save_checkpoint_entry(key, key_lines, checkpoint)
 
             # Progress indicator
             processed = i + 1
@@ -500,6 +544,11 @@ def translate_file(high_threshold=HIGH_CONFIDENCE_THRESHOLD,
     print("\nWriting translated file...")
     with open(SL_PATH, 'w', encoding='utf-8') as f:
         f.write('\n'.join(output_lines))
+
+    # Remove checkpoint now that the output is safely written
+    if CHECKPOINT_PATH.exists():
+        CHECKPOINT_PATH.unlink()
+        print("Checkpoint removed.")
 
     # Summary
     print('\n' + '='*70)
