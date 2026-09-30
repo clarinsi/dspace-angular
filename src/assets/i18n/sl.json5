@@ -1767,7 +1767,7 @@
   "collection.source.controls.test.submit.error": "Pri zagonu testiranja nastavitev je prišlo do napake",  // REVIEW: Vanessa Sobočan
 
   // "collection.source.controls.test.failed": "The script to test the settings has failed",
-  "collection.source.controls.test.failed": "Skripta za testiranje nastavitev ni bilo možno izvesti",  // REVIEW: Vanessa Sobočan
+  "collection.source.controls.test.failed": "Skripte za testiranje nastavitev ni bilo možno izvesti",  // REVIEW: Vanessa Sobočan
 
   // "collection.source.controls.test.completed": "The script to test the settings has successfully finished",
   "collection.source.controls.test.completed": "Skript za testiranje nastavitev se je uspešno zaključil",  // REVIEW: Vanessa Sobočan
@@ -5409,7 +5409,7 @@
   "process.new.select-script.placeholder": "Izberite skripto ...",  // REVIEW: Vanessa Sobočan
 
   // "process.new.select-script.required": "Script is required",
-  "process.new.select-script.required": "Skripta je obvezen",  // REVIEW: Vanessa Sobočan
+  "process.new.select-script.required": "Skripta je obvezna",  // REVIEW: Vanessa Sobočan
 
   // "process.new.parameter.file.upload-button": "Select file...",
   "process.new.parameter.file.upload-button": "Izberi datoteko ...",  // REVIEW: Vanessa Sobočan
