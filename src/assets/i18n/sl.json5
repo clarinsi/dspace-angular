@@ -111,7 +111,7 @@
   "admin.registries.bitstream-formats.delete.success.head": "Uspeh",  // REVIEW: Vanessa Sobočan
 
   // "admin.registries.bitstream-formats.description": "This list of bitstream formats provides information about known formats and their support level.",
-  "admin.registries.bitstream-formats.description": "Ta seznam formatov bitnih tokov vsebuje informacije o znanih formatih in stopnji njihove podpore.",  // REVIEW: Vanessa Sobočan
+  "admin.registries.bitstream-formats.description": "Ta seznam formatov bitnih tokov vsebuje informacije o znanih formatih in ravni njihove podpore.",  // REVIEW: Vanessa Sobočan
 
   // "admin.registries.bitstream-formats.edit.breadcrumbs": "Bitstream format",
   "admin.registries.bitstream-formats.edit.breadcrumbs": "Format bitnega toka",  // REVIEW: Vanessa Sobočan
@@ -180,7 +180,7 @@
   "admin.registries.bitstream-formats.table.delete": "Izbriši izbrano",  // REVIEW: Vanessa Sobočan
 
   // "admin.registries.bitstream-formats.table.deselect-all": "Deselect all",
-  "admin.registries.bitstream-formats.table.deselect-all": "Odznači vse",  // REVIEW: Vanessa Sobočan
+  "admin.registries.bitstream-formats.table.deselect-all": "Počisti izbiro",  // REVIEW: Vanessa Sobočan
 
   // "admin.registries.bitstream-formats.table.internal": "internal",
   "admin.registries.bitstream-formats.table.internal": "interno",  // REVIEW: Vanessa Sobočan
@@ -342,7 +342,7 @@
   "admin.access-control.bulk-access.title": "Množično upravljanje dostopa",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.bulk-access-browse.header": "Step 1: Select Objects",
-  "admin.access-control.bulk-access-browse.header": "1. korak: izberite objekte",  // REVIEW: Vanessa Sobočan
+  "admin.access-control.bulk-access-browse.header": "1. korak: izberi objekte",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.bulk-access-browse.search.header": "Search",
   "admin.access-control.bulk-access-browse.search.header": "Išči",  // REVIEW: Vanessa Sobočan
@@ -351,7 +351,7 @@
   "admin.access-control.bulk-access-browse.selected.header": "Trenutna izbira({{number}})",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.bulk-access-settings.header": "Step 2: Operation to Perform",
-  "admin.access-control.bulk-access-settings.header": "2. korak: Izvedba operacije",  // REVIEW: Vanessa Sobočan
+  "admin.access-control.bulk-access-settings.header": "2. korak: izvedi operacije",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.epeople.actions.delete": "Delete EPerson",
   "admin.access-control.epeople.actions.delete": "Izbriši e-osebo",  // REVIEW: Vanessa Sobočan
@@ -594,7 +594,7 @@
   "admin.access-control.groups.form.groupName": "Ime skupine",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.groups.form.groupCommunity": "Community or Collection",
-  "admin.access-control.groups.form.groupCommunity": "Zbirka / Skupnost",  // REVIEW: Vanessa Sobočan
+  "admin.access-control.groups.form.groupCommunity": "Zbirka ali Skupnost",  // REVIEW: Vanessa Sobočan
 
   // "admin.access-control.groups.form.groupDescription": "Description",
   "admin.access-control.groups.form.groupDescription": "Opis",  // REVIEW: Vanessa Sobočan
@@ -858,7 +858,7 @@
   "admin.batch-import.page.help": "Izberite zbirko, v katero želite uvoziti datoteke. Nato spustite ali poiščite datoteko formata Simple Archive Format (SAF) zip, ki vsebuje vnose za uvoz",  // REVIEW: Vanessa Sobočan
 
   // "admin.batch-import.page.toggle.help": "It is possible to perform import either with file upload or via URL, use above toggle to set the input source",
-  "admin.batch-import.page.toggle.help": "Uvoz je mogoč z nalaganjem datoteke ali preko URL-ja, da spremenite vir vnosa, uporabite zgornji gumb",  // REVIEW: Vanessa Sobočan
+  "admin.batch-import.page.toggle.help": "Uvoz je mogoč z nalaganjem datoteke ali preko URL-ja. Če želite spremeniti vir vnosa, uporabite zgornji gumb",  // REVIEW: Vanessa Sobočan
 
   // "admin.metadata-import.page.dropMsg": "Drop a metadata CSV to import",
   "admin.metadata-import.page.dropMsg": "Spusti CSV z metapodatki za uvoz",  // REVIEW: Vanessa Sobočan
@@ -903,7 +903,7 @@
   "admin.metadata-import.page.validateOnly": "Samo validacija",  // REVIEW: Vanessa Sobočan
 
   // "admin.metadata-import.page.validateOnly.hint": "When selected, the uploaded CSV will be validated. You will receive a report of detected changes, but no changes will be saved.",
-  "admin.metadata-import.page.validateOnly.hint": "Ko to izberete, bo naložena CSV datoteka validirana. Prejeli boste poročilo o zaznanih spremembah, vendar nobene spremembe ne bodo shranjene.",  // REVIEW: Vanessa Sobočan
+  "admin.metadata-import.page.validateOnly.hint": "Ko to izberete, bo naložena CSV datoteka validirana. Prejeli boste poročilo o zaznanih spremembah, vendar te spremembe ne bodo shranjene.",  // REVIEW: Vanessa Sobočan
 
   // "advanced-workflow-action.rating.form.rating.label": "Rating",
   "advanced-workflow-action.rating.form.rating.label": "Ocena",  // REVIEW: Vanessa Sobočan
@@ -2229,7 +2229,7 @@
   "curation.form.submit.success.head": "Naloga kuriranja se je uspešno začela izvajati",  // REVIEW: Vanessa Sobočan
 
   // "curation.form.submit.success.content": "You will be redirected to the corresponding process page.",
-  "curation.form.submit.success.content": "Preusmerjeni boste na ustrezno stran postopka.",  // REVIEW: Vanessa Sobočan
+  "curation.form.submit.success.content": "Preusmerjeni boste na ustrezno stran procesa.",  // REVIEW: Vanessa Sobočan
 
   // "curation.form.submit.error.head": "Running the curation task failed",
   "curation.form.submit.error.head": "Kuriranje ni bilo uspešno izvedeno",  // REVIEW: Vanessa Sobočan
@@ -2625,16 +2625,16 @@
   "forgot-password.form.card.security": "Varnost",  // REVIEW: Vanessa Sobočan
 
   // "forgot-password.form.identification.header": "Identify",
-  "forgot-password.form.identification.header": "Identificiraj",  // REVIEW: Vanessa Sobočan
+  "forgot-password.form.identification.header": "Osnovni podatki",  // REVIEW: Vanessa Sobočan
 
   // "forgot-password.form.identification.email": "Email address: ",
   "forgot-password.form.identification.email": "E-poštni naslov: ",  // REVIEW: Vanessa Sobočan
 
   // "forgot-password.form.label.password": "Password",
-  "forgot-password.form.label.password": "Geslo",  // REVIEW: Vanessa Sobočan
+  "forgot-password.form.label.password": "Novo geslo",  // REVIEW: Vanessa Sobočan
 
   // "forgot-password.form.label.passwordrepeat": "Retype to confirm",
-  "forgot-password.form.label.passwordrepeat": "Ponovno vnesite za potrditev",  // REVIEW: Vanessa Sobočan
+  "forgot-password.form.label.passwordrepeat": "Za potrditev ponovno vnesite novo geslo",  // REVIEW: Vanessa Sobočan
 
   // "forgot-password.form.error.empty-password": "Please enter a password in the box below.",
   "forgot-password.form.error.empty-password": "Prosimo, da v spodnje polje vnesete geslo.",  // REVIEW: Vanessa Sobočan
@@ -2904,7 +2904,7 @@
   "home-page.carousel.ldata.info": "Jezikovni podatki in orodja NLP",  // REVIEW: Vanessa Sobočan
 
   // "home-page.carousel.ldata.find": "Find",
-  "home-page.carousel.ldata.find": "Poišči",  // REVIEW: Vanessa Sobočan
+  "home-page.carousel.ldata.find": "Išči",  // REVIEW: Vanessa Sobočan
 
   // "home-page.carousel.ldata.citation-support": "Citation Support (with Persistent IDs)",
   "home-page.carousel.ldata.citation-support": "Podpora za citiranje (s trajnimi identifikatorji)",  // REVIEW: Vanessa Sobočan
@@ -3228,7 +3228,7 @@
   "item.bitstreams.upload.notifications.bundle.created.content": "Sveženj je bil uspešno ustvarjen.",  // REVIEW: Tomaž Erjavec
 
   // "item.bitstreams.upload.notifications.bundle.created.title": "Created bundle",
-  "item.bitstreams.upload.notifications.bundle.created.title": "Sveženj je bil ustvarjev",  // REVIEW: Tomaž Erjavec
+  "item.bitstreams.upload.notifications.bundle.created.title": "Ustvarjen sveženj",  // REVIEW: Tomaž Erjavec
 
   // "item.bitstreams.upload.notifications.upload.failed": "Upload failed. Please verify the content before retrying.",
   "item.bitstreams.upload.notifications.upload.failed": "Nalaganje ni uspelo. Prosimo, da preden ponovno poskusite, še enkrat preverite vsebino.",  // REVIEW: Vanessa Sobočan
@@ -5025,7 +5025,7 @@
   "menu.section.new_item_version": "Različica vonsa",  // REVIEW: Vanessa Sobočan
 
   // "menu.section.new_process": "Process",
-  "menu.section.new_process": "Postopek",  // REVIEW: Vanessa Sobočan
+  "menu.section.new_process": "Proces",  // REVIEW: Vanessa Sobočan
 
   // "menu.section.pin": "Pin sidebar",
   "menu.section.pin": "Pripni stransko vrstico",  // REVIEW: Vanessa Sobočan
@@ -5403,13 +5403,13 @@
   "process.new.submit": "Shrani",  // REVIEW: Vanessa Sobočan
 
   // "process.new.select-script": "Script",
-  "process.new.select-script": "Skript",  // REVIEW: Vanessa Sobočan
+  "process.new.select-script": "Skripta",  // REVIEW: Vanessa Sobočan
 
   // "process.new.select-script.placeholder": "Choose a script...",
   "process.new.select-script.placeholder": "Izberite skripto ...",  // REVIEW: Vanessa Sobočan
 
   // "process.new.select-script.required": "Script is required",
-  "process.new.select-script.required": "Skript je obvezen",  // REVIEW: Vanessa Sobočan
+  "process.new.select-script.required": "Skripta je obvezen",  // REVIEW: Vanessa Sobočan
 
   // "process.new.parameter.file.upload-button": "Select file...",
   "process.new.parameter.file.upload-button": "Izberi datoteko ...",  // REVIEW: Vanessa Sobočan
@@ -5481,7 +5481,7 @@
   "process.detail.output-files.empty": "Ta proces ne vsebuje nobenih izhodnih datotek",  // REVIEW: Vanessa Sobočan
 
   // "process.detail.script": "Script",
-  "process.detail.script": "Skript",  // REVIEW: Vanessa Sobočan
+  "process.detail.script": "Skripta",  // REVIEW: Vanessa Sobočan
 
   // "process.detail.title": "Process: {{ id }} - {{ name }}",
   "process.detail.title": "Proces: {{ id }} - {{ name }}",  // REVIEW: Vanessa Sobočan
@@ -6084,7 +6084,7 @@
   "resource-policies.table.headers.edit.group": "Uredi skupino",  // REVIEW: Vanessa Sobočan
 
   // "resource-policies.table.headers.edit.policy": "Edit policy",
-  "resource-policies.table.headers.edit.policy": "Uredi pogoj dostopa",  // REVIEW: Vanessa Sobočan
+  "resource-policies.table.headers.edit.policy": "Uredi politiko",  // REVIEW: Vanessa Sobočan
 
   // "resource-policies.table.headers.eperson": "EPerson",
   "resource-policies.table.headers.eperson": "E-oseba",  // REVIEW: Vanessa Sobočan
@@ -6141,7 +6141,7 @@
   "clarin-license.table.extended-labels": "Razširjene Oznake",  // REVIEW: Vanessa Sobočan
 
   // "clarin-license.table.bitstreams": "Used by Bitstreams",
-  "clarin-license.table.bitstreams": "Uporabljajo bitni tokovi",  // REVIEW: Vanessa Sobočan
+  "clarin-license.table.bitstreams": "Uporablja se v bitnih tokovih",  // REVIEW: Vanessa Sobočan
 
   // "clarin-license.button.define": "Define",
   "clarin-license.button.define": "Določi",  // REVIEW: Vanessa Sobočan
@@ -6366,13 +6366,13 @@
   "search.filters.filter.dateIssued.max.placeholder": "Največji datum",  // REVIEW: Vanessa Sobočan
 
   // "search.filters.filter.dateIssued.max.label": "End",
-  "search.filters.filter.dateIssued.max.label": "Končaj",  // REVIEW: Vanessa Sobočan
+  "search.filters.filter.dateIssued.max.label": "Konec",  // REVIEW: Vanessa Sobočan
 
   // "search.filters.filter.dateIssued.min.placeholder": "Minimum Date",
   "search.filters.filter.dateIssued.min.placeholder": "Najmanjši datum",  // REVIEW: Vanessa Sobočan
 
   // "search.filters.filter.dateIssued.min.label": "Start",
-  "search.filters.filter.dateIssued.min.label": "Začni",  // REVIEW: Vanessa Sobočan
+  "search.filters.filter.dateIssued.min.label": "Začetek",  // REVIEW: Vanessa Sobočan
 
   // "search.filters.filter.dateSubmitted.head": "Date submitted",
   "search.filters.filter.dateSubmitted.head": "Datum vnosa",  // REVIEW: Vanessa Sobočan
@@ -6612,7 +6612,7 @@
   "search.results.head": "Rezultati iskanja",  // REVIEW: Vanessa Sobočan
 
   // "search.results.no-results": "Your search returned no results. Having trouble finding what you're looking for? Try putting",
-  "search.results.no-results": "Ni rezultatov. Ne najdete to, kar iščete? Poskusite dati",  // REVIEW: Vanessa Sobočan
+  "search.results.no-results": "Ni rezultatov. Ne najdete tega, kar iščete? Poskusite dati",  // REVIEW: Vanessa Sobočan
 
   // "search.results.no-results-link": "quotes around it",
   "search.results.no-results-link": "v narekovaje",  // REVIEW: Vanessa Sobočan
@@ -7140,7 +7140,7 @@
   "submission.sections.describe.relationship-lookup.external-source.import-modal.select": "Izberi lokalno ujemanje:",  // REVIEW: Vanessa Sobočan
 
   // "submission.sections.describe.relationship-lookup.search-tab.deselect-all": "Deselect all",
-  "submission.sections.describe.relationship-lookup.search-tab.deselect-all": "Počisti izbor vsega",  // REVIEW: Vanessa Sobočan
+  "submission.sections.describe.relationship-lookup.search-tab.deselect-all": "Počisti izbor",  // REVIEW: Vanessa Sobočan
 
   // "submission.sections.describe.relationship-lookup.search-tab.deselect-page": "Deselect page",
   "submission.sections.describe.relationship-lookup.search-tab.deselect-page": "Počisti izbor strani",  // REVIEW: Vanessa Sobočan
@@ -8166,7 +8166,7 @@
   "vocabulary-treeview.info": "Izberite temo in jo dodajte kot filter iskanja",  // REVIEW: Vanessa Sobočan
 
   // "uploader.browse": "browse",
-  "uploader.browse": "brskanje",  // REVIEW: Vanessa Sobočan
+  "uploader.browse": "brskajte",  // REVIEW: Vanessa Sobočan
 
   // "uploader.drag-message": "Drag & Drop your files here",
   "uploader.drag-message": "Povlecite in spustite vaše datoteke sem",  // REVIEW: Vanessa Sobočan
@@ -8364,7 +8364,7 @@
   "language.slovene": "Slovenščina",  // REVIEW: Vanessa Sobočan
 
   // "repository.policy.page": "Change me: policy page",
-  "repository.policy.page": "Spremeni me: stran za pogoje uporabe",  // REVIEW: Vanessa Sobočan
+  "repository.policy.page": "Spremeni me: stran za politike",  // REVIEW: Vanessa Sobočan
 
   // "idle-modal.extend-session": "Extend session",
   "idle-modal.extend-session": "Podaljšaj sejo",  // REVIEW: Vanessa Sobočan
@@ -9198,7 +9198,7 @@
   "login.already-authenticated.message": "Trenutno ste prijavljeni. Se želite vrniti na začetno stran ali na svoj profil?",  // REVIEW: Vanessa Sobočan
 
   // "login.already-authenticated.go-home": "Home",
-  "login.already-authenticated.go-home": "Domov",  // REVIEW: Vanessa Sobočan
+  "login.already-authenticated.go-home": "Začetna stran",  // REVIEW: Vanessa Sobočan
 
   // "login.already-authenticated.go-profile": "Profile",
   "login.already-authenticated.go-profile": "Profil",  // REVIEW: Vanessa Sobočan
@@ -9282,7 +9282,7 @@
   "matomo.subscription.unsubscribe.success.message": "Uspešno ste se odjavili od naročnine na statistiko vnosa!",  // REVIEW: Tomaž Erjavec
 
   // "matomo.subscription.unsubscribe.error.title": "Unsubscribe Failed",
-  "matomo.subscription.unsubscribe.error.title": "Odjava s seznama ni bila uspešna",  // REVIEW: Vanessa Sobočan
+  "matomo.subscription.unsubscribe.error.title": "Odjava od naročnine ni bila uspešna",  // REVIEW: Vanessa Sobočan
 
   // "matomo.subscription.unsubscribe.error.message": "Unable to unsubscribe from item statistics. Please try again later.",
   "matomo.subscription.unsubscribe.error.message": "Ni se mogoče odjaviti od naročnine na statistiko vnosa. Prosimo, poskusite znova kasneje.",  // REVIEW: Tomaž Erjavec
